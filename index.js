@@ -601,7 +601,7 @@ const listId2Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: `${hour}, ${minutes}, ${day}`
+        body: date
       }
     },
     headers: { "Content-Type": "application/json" },
