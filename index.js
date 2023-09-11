@@ -615,7 +615,7 @@ const listId5Response= (phone_number_id, from) => {
         type: "button",
         body: {
           // text: "Select the option"
-          text: "Please select the menu type"
+          text: "Please Select Menu type"
         },
         action: {
           buttons: [
@@ -623,7 +623,7 @@ const listId5Response= (phone_number_id, from) => {
               type: "reply",
               reply: {
                 id: "UNIQUE_BUTTON_ID_4",
-                title: "Food"
+                title: "Food Menu"
               }
             },
             {
@@ -637,7 +637,7 @@ const listId5Response= (phone_number_id, from) => {
               type: "reply",
               reply: {
                 id: "UNIQUE_BUTTON_ID_5",
-                title: "Bar"
+                title: "Bar Menu"
               }
             }
           ]
