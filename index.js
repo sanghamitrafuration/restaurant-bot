@@ -15,6 +15,35 @@ const axios = require("axios").default;
 const  app = express().use(body_parser.json()); // creates express http server
 const PORT= process.env.PORT || 1337;
 
+const foodMenu= [
+  "https://i.postimg.cc/y889jJYb/ambience-1.jpg", 
+  "https://i.postimg.cc/q7tKf9Kc/ambience-2.jpg", 
+  "https://i.postimg.cc/1zLqyJ0k/ambience-3.jpg"
+];
+const Bevarages= [
+  "", 
+  "", 
+  "",
+  ""
+];
+const BarMenu= [
+  "", 
+  "", 
+  "",
+  ""
+];
+const Ambience= [
+  "https://i.postimg.cc/y889jJYb/ambience-1.jpg", 
+  "https://i.postimg.cc/q7tKf9Kc/ambience-2.jpg", 
+  "https://i.postimg.cc/1zLqyJ0k/ambience-3.jpg"
+];
+const TopDishes= [
+  "", 
+  "", 
+  "",
+  ""
+];
+
 
 
 // Sets server port and logs message on success
@@ -376,24 +405,7 @@ const buttonId2Response= (phone_number_id, from) => {
 }
 
 const buttonId3Response= (phone_number_id, from, msg_body) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: { // the text object
-        "preview_url": true,
-        body: "Ambience Photos"
-      }
-    },
-    headers: { "Content-Type": "application/json" },
-  })
+  image
 }
 
 const buttonId4Response= (phone_number_id, from) => {
@@ -431,7 +443,7 @@ const buttonId5Response= (phone_number_id, from) => {
       type: "text",
       text: { // the text object
         "preview_url": true,
-        body: "Please call on +91-8879906881"
+        body: "Please call on +91-8976452911"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -439,6 +451,27 @@ const buttonId5Response= (phone_number_id, from) => {
 }
 
 const buttonId6Response= (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: { // the text object
+        "preview_url": true,
+        body: "Please call on +91-8976452911"
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  })
+}
+
+const buttonId7Response= (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -574,6 +607,26 @@ const listId3Response= (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   })
+  for(let i=0;i<Ambience.length;i++){
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": from,
+        "type": "image",
+        "image": {
+          "link" : Ambience[i]
+        }
+      },
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 }
 
 const listId4Response= (phone_number_id, from) => {
@@ -681,8 +734,8 @@ const listId7Response= (phone_number_id, from) => {
       "to": from,
       "type": "location",
       "location": {
-        "longitude": "72.83547326581012",
-        "latitude": "19.059717376986885",
+        "longitude": "72.83548324964343",
+        "latitude": "19.059504187994314",
         "name": "AKINA",
         "address": "Golden Palace, Turner Rd, opposite Mala Sinha Bunglow, Bandra West, Mumbai, Maharashtra 400050"
       }
