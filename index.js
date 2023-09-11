@@ -565,11 +565,12 @@ const listId1Response= (phone_number_id, from) => {
       "/messages?access_token=" +
       token,
     data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: { // the text object
-        body: "Monday - 7:30pm - 1am,                  Tuesday- 7:30pm - 1am,                  Wednesday - 7:30pm - 1am,                   Thursday - 7:30pm - 1am,                  Friday - 7:30pm - 1am,                  Saturday - 12:30pm - 3:30am, 7:30pm - 1am,                           Sunday - 12:30pm - 3:30pm, 7:30pm - 1am"
+      "messaging_product": "whatsapp",
+      "recipient_type": "individual",
+      "to": from,
+      "type": "image",
+      "image": {
+        "link" : "https://i.postimg.cc/rp8kMWV3/time-akina.png"
       }
     },
     headers: { "Content-Type": "application/json" },
