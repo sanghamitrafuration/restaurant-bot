@@ -48,7 +48,7 @@ app.post("/webhook", async(req, res) => {
         console.log(reqData.entry[0].changes[0].value.messages[0], "body.entry[0].changes[0].value.messages[0]")
         if(msg_body=="Hi" || msg_body=="hi" || msg_body=="Hey" || msg_body=="hey" || msg_body=="Hello" || msg_body=="hello"){
           msg_body="Welcome to *AKINA* . AKINA Mumbai, a contemporary Japanese bar & restaurant situated in the heart of Bandra. Inspired by the journey of an experience driven & hungry soul, we are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
-          welcomeMessageButtons(phone_number_id, msg_body, from);
+          welcomeMessageMenu(phone_number_id, msg_body, from);
         }
         else if(msg_body=="Ok" || msg_body=="ok" || msg_body=="thanks"){
           msg_body= "Thank you for contacting us";
@@ -56,7 +56,7 @@ app.post("/webhook", async(req, res) => {
         }
         else{
           msg_body="Welcome to *AKINA* . AKINA Mumbai, a contemporary Japanese bar & restaurant situated in the heart of Bandra. Inspired by the journey of an experience driven & hungry soul, we are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
-          welcomeMessageButtons(phone_number_id, msg_body, from);
+          welcomeMessageMenu(phone_number_id, msg_body, from);
         }
       } else if (
         reqData.entry &&
@@ -169,7 +169,7 @@ app.get("/webhook", (req, res) => {
   }
 });
 
-const welcomeMessageButtons= (phone_number_id, msg_body, from) => {
+const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -178,49 +178,79 @@ const welcomeMessageButtons= (phone_number_id, msg_body, from) => {
       "/messages?access_token=" +
       token,
     data: {
-      messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: msg_body
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-         body: {
-         // text: "Select the option"
-         text: msg_body
+      "messaging_product": "whatsapp",
+      "recipient_type": "individual",
+      "to": from,
+      "type": "interactive",
+      "interactive": {
+        "type": "list",
+        "header": {
+          "type": "text",
+          "text": "Our Services"
         },
-        action: {
-          buttons: [
+        "body": {
+          "text": "Our aim is to provide innovative solutions that cater to the unique needs of each client and drive their business forward."
+        },
+        "footer": {
+          "text": "Click the button to explore more"
+        },
+        "action": {
+          "button": "About Us",
+          "sections": [
             {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_1",
-                title: "Our Services"
-              }
+              "title": "App Development",
+              "rows": [
+                {
+                  "id": "OUR_SERVICE_1_ID",
+                  "title": "Mobile App Development"
+                },
+                {
+                  "id": "OUR_SERVICE_2_ID",
+                  "title": "Web App Development"
+                }
+              ]
             },
             {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_2",
-                title: "Our Clients"
-              }
+              "title": "Designs",
+              "rows": [
+                {
+                  "id": "OUR_SERVICE_3_ID",
+                  "title": "SECTION_2_ROW_1_TITLE"
+                },
+                {
+                  "id": "OUR_SERVICE_4_ID",
+                  "title": "UI & UX Design"
+                }
+              ]
             },
             {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_3",
-                title: "Contact Us"
-              }
+              "title": "Development & Team",
+              "rows": [
+                {
+                  "id": "OUR_SERVICE_5_ID",
+                  "title": "SECTION_3_ROW_1_TITLE"
+                },
+                {
+                  "id": "OUR_SERVICE_6_ID",
+                  "title": "Team Augmentation"
+                }
+              ]
             },
+            {
+              "title": "Strategy",
+              "rows": [
+                {
+                  "id": "OUR_SERVICE_7_ID",
+                  "title": "SECTION_4_ROW_1_TITLE"
+                }
+              ]
+            }
           ]
         }
       }
     },
     headers: { "Content-Type": "application/json" },
-    
-  }).then(res=>console.log(res))
-  .catch(err=>console.log(err))
+  })
 }
 
 const buttonId1Response= (phone_number_id, from) => {
