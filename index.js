@@ -569,7 +569,7 @@ const listId1Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Monday- 7:30pm-1am, Tuesday- 7:30pm-1am, Wednesday- 7:30pm-1am, Thursday- 7:30pm-1am, Friday- 7:30pm-1am, Saturday- 12:30pm-3:30am, 7:30pm-1am, Sunday- 12:30pm-3:30pm, 7:30pm-1am"
+        body: "Monday- 7:30pm-1am,         Tuesday- 7:30pm-1am,         Wednesday- 7:30pm-1am,          Thursday- 7:30pm-1am,         Friday- 7:30pm-1am,         Saturday- 12:30pm-3:30am, 7:30pm-1am,         Sunday- 12:30pm-3:30pm, 7:30pm-1am"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -577,7 +577,6 @@ const listId1Response= (phone_number_id, from) => {
 }
 
 const listId2Response= (phone_number_id, from) => {
-  const week= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const date = new Date();
   const day = date.getDay();
   const hour = date.getHours();
