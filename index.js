@@ -564,44 +564,12 @@ const listId3Response= (phone_number_id, from) => {
       phone_number_id +
       "/messages?access_token=" +
       token,
-    data: { 
+    data: {
       messaging_product: "whatsapp",
       to: from,
-      text: {
-        body: msg_body
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: msg_body
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_4",
-                title: "Email"
-              }
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_5",
-                title: "Phone"
-              }
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_6",
-                title: "Image"
-              }
-            }
-          ]
-        }
+      type: "text",
+      text: { // the text object
+        body: "Ambience Photos"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -621,7 +589,7 @@ const listId4Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Thank you for your enquiry about UI & UX Design. We have received your response. Our team will contact you soon."
+        body: "Top & Best Dishes"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -647,7 +615,7 @@ const listId5Response= (phone_number_id, from) => {
         type: "button",
         body: {
           // text: "Select the option"
-          text: msg_body
+          text: "Please select the menu type"
         },
         action: {
           buttons: [
@@ -655,14 +623,21 @@ const listId5Response= (phone_number_id, from) => {
               type: "reply",
               reply: {
                 id: "UNIQUE_BUTTON_ID_4",
-                title: "Email"
+                title: "Food"
               }
             },
             {
               type: "reply",
               reply: {
                 id: "UNIQUE_BUTTON_ID_5",
-                title: "Phone"
+                title: "Bevarages"
+              }
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_5",
+                title: "Bar"
               }
             }
           ]
@@ -706,7 +681,7 @@ const listId7Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Thank you for your enquiry about Design & Product Strategy. We have received your response. Our team will contact you soon."
+        body: "Location"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -766,12 +741,37 @@ const listId9Response= (phone_number_id, from) => {
       phone_number_id +
       "/messages?access_token=" +
       token,
-    data: {
+    data: { 
       messaging_product: "whatsapp",
       to: from,
-      type: "text",
-      text: { // the text object
-        body: "Thank you for your enquiry about Design & Product Strategy. We have received your response. Our team will contact you soon."
+      text: {
+        body: msg_body
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: "Please select the menu type"
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_4",
+                title: "Phone"
+              }
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_5",
+                title: "Email"
+              }
+            }
+          ]
+        }
       }
     },
     headers: { "Content-Type": "application/json" },
