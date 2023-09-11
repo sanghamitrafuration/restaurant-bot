@@ -608,7 +608,7 @@ const listId5Response= (phone_number_id, from) => {
       messaging_product: "whatsapp",
       to: from,
       text: {
-        body: msg_body
+        body: "Menu"
       },
       type: "interactive",
       interactive: {
@@ -700,14 +700,14 @@ const listId8Response= (phone_number_id, from) => {
       messaging_product: "whatsapp",
       to: from,
       text: {
-        body: msg_body
+        body: "Order Link"
       },
       type: "interactive",
       interactive: {
         type: "button",
         body: {
           // text: "Select the option"
-          text: msg_body
+          text: "Order Link"
         },
         action: {
           buttons: [
@@ -745,7 +745,7 @@ const listId9Response= (phone_number_id, from) => {
       messaging_product: "whatsapp",
       to: from,
       text: {
-        body: msg_body
+        body: "Menu"
       },
       type: "interactive",
       interactive: {
