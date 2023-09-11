@@ -578,7 +578,7 @@ const listId1Response= (phone_number_id, from) => {
 
 const listId2Response= (phone_number_id, from) => {
   const week= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const date = Date.now();
+  const date = new Date();
   const day = date.getDay();
   const hour = date.getHours();
   const minutes = date.getMinutes();
@@ -601,7 +601,7 @@ const listId2Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: date
+        body: `${hour}, ${minutes}, ${day}`
       }
     },
     headers: { "Content-Type": "application/json" },
