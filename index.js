@@ -242,6 +242,10 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
                 {
                   "id": "OUR_SERVICE_7_ID",
                   "title": "Our Location"
+                },
+                {
+                  "id": "OUR_SERVICE_8_ID",
+                  "title": "Ambience Photos"
                 }
               ]
             }
