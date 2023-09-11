@@ -24,7 +24,7 @@ const foodMenu= [
   "https://i.postimg.cc/0ysF5bJR/food-6.png",
   "https://i.postimg.cc/ZRCDsNX3/food-7.png"
 ];
-const Bevarages= [
+const Beverages= [
   "https://i.postimg.cc/wBbwNv3B/bar-12.png"
 ];
 const BarMenu= [
@@ -128,6 +128,8 @@ app.post("/webhook", async(req, res) => {
           buttonId5Response(phone_number_id, from);
         }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_6") {
           buttonId6Response(phone_number_id, from);
+        }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_7") {
+          buttonId7Response(phone_number_id, from);
         }else{
           noresponse(phone_number_id, from);
         }
@@ -263,7 +265,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
                 },
                 {
                   "id": "OUR_SERVICE_4_ID",
-                  "title": "Top & Best Dishes"
+                  "title": "Top Dishes"
                 }
               ]
             },
@@ -323,7 +325,7 @@ const buttonId1Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Food Menu"
+        body: "Food Menu is here"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -363,12 +365,12 @@ const buttonId2Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Bevarages"
+        body: "Beverage Menu is Here"
       }
     },
     headers: { "Content-Type": "application/json" },
   })
-  for(let i=0;i<Bevarages.length;i++){
+  for(let i=0;i<Beverages.length;i++){
     axios({
       method: "POST", // Required, HTTP method, a string, e.g. POST, GET
       url:
@@ -382,7 +384,7 @@ const buttonId2Response= (phone_number_id, from) => {
         "to": from,
         "type": "image",
         "image": {
-          "link" : Bevarages[i]
+          "link" : Beverages[i]
         }
       },
       headers: { "Content-Type": "application/json" },
@@ -403,7 +405,7 @@ const buttonId3Response= (phone_number_id, from, msg_body) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Bar Menu"
+        body: "Bar Menu is Here"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -444,7 +446,7 @@ const buttonId4Response= (phone_number_id, from) => {
       type: "text",
       text: { // the text object
         "preview_url": true,
-        body: "Top & Best Dishes"
+        body: "Pleas click on https://www.zomato.com/mumbai/akina-contemporary-japanese-restaurant-and-bar-linking-road-bandra-west to visit our Restaurant on Zomato"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -465,7 +467,7 @@ const buttonId5Response= (phone_number_id, from) => {
       type: "text",
       text: { // the text object
         "preview_url": true,
-        body: "Please call on +91-8976452911"
+        body: "Pleas click on https://www.swiggy.com/ to visit us on Swiggy."
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -506,25 +508,8 @@ const buttonId7Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Here is the image"
-      }
-    },
-    headers: { "Content-Type": "application/json" },
-  })
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      "messaging_product": "whatsapp",
-      "recipient_type": "individual",
-      "to": from,
-      "type": "image",
-      "image": {
-        "link" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXnC3fwMwkbIt3ejGRIw3NmbDyUtgS5g2jA&usqp=CAU"
+        "preview_url": true,
+        body: "Please mail us at hello@furation.tech"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -725,7 +710,7 @@ const listId5Response= (phone_number_id, from) => {
               type: "reply",
               reply: {
                 id: "UNIQUE_BUTTON_ID_2",
-                title: "Bevarages"
+                title: "Beverages"
               }
             },
             {
