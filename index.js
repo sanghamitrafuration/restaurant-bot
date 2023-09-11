@@ -228,11 +228,11 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               "rows": [
                 {
                   "id": "OUR_SERVICE_5_ID",
-                  "title": "SECTION_3_ROW_1_TITLE"
+                  "title": "Highlights of Restaurant"
                 },
                 {
                   "id": "OUR_SERVICE_6_ID",
-                  "title": "Highlights of Restaurant"
+                  "title": "Menu"
                 }
               ]
             },
@@ -241,7 +241,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               "rows": [
                 {
                   "id": "OUR_SERVICE_7_ID",
-                  "title": "SECTION_4_ROW_1_TITLE"
+                  "title": "Our Location"
                 }
               ]
             }
