@@ -578,16 +578,16 @@ const listId1Response= (phone_number_id, from) => {
 
 const listId2Response= (phone_number_id, from) => {
   const week= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const date = new Date();
+  const date = Date.now();
   const day = date.getDay();
   const hour = date.getHours();
   const minutes = date.getMinutes();
   let answer= false
-  // if(day===0){
-  //   if(hour<)
-  // }else if(day===1){
+  if(day===0){
+    if(hour<)
+  }else if(day===1){
 
-  // }
+  }
   const reply= answer===true? "Yes, We are open now" : "We are sorry to say that we are closed now";
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
