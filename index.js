@@ -189,7 +189,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
           "text": "Our Services"
         },
         "body": {
-          "text": "Our aim is to provide innovative solutions that cater to the unique needs of each client and drive their business forward."
+          "text": msg_body
         },
         "footer": {
           "text": "Click the button to explore more"
