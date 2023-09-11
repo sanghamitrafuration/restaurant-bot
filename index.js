@@ -1,11 +1,3 @@
-
-/*
- * Starter Project for WhatsApp Echo Bot Tutorial
- *
- * Remix this as the starting point for following the WhatsApp Echo Bot tutorial
- *
- */
-
 "use strict";
 
 
@@ -55,7 +47,7 @@ app.post("/webhook", async(req, res) => {
         let msg_body = reqData.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
         console.log(reqData.entry[0].changes[0].value.messages[0], "body.entry[0].changes[0].value.messages[0]")
         if(msg_body=="Hi" || msg_body=="hi" || msg_body=="Hey" || msg_body=="hey" || msg_body=="Hello" || msg_body=="hello"){
-          msg_body="Welcome to *Furation tech Solutions* . *Technology that drives your business* . We specialize in providing comprehensive solutions in Blockchain and Human Resource Management (HRM), Customer Relationship Management (CRM), Enterprise Resource Planning (ERP), and custom E-commerce solutions."
+          msg_body="Welcome to *AKINA* . AKINA Mumbai, a contemporary Japanese bar & restaurant situated in the heart of Bandra. Inspired by the journey of an experience driven & hungry soul, we are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
           welcomeMessageButtons(phone_number_id, msg_body, from);
         }
         else if(msg_body=="Ok" || msg_body=="ok" || msg_body=="thanks"){
@@ -63,7 +55,7 @@ app.post("/webhook", async(req, res) => {
           okresponse(phone_number_id, from, msg_body);
         }
         else{
-          msg_body="Welcome to *Furation tech Solutions* . *Technology that drives your business* . We specialize in providing comprehensive solutions in Blockchain and Human Resource Management (HRM), Customer Relationship Management (CRM), Enterprise Resource Planning (ERP), and custom E-commerce solutions."
+          msg_body="Welcome to *AKINA* . AKINA Mumbai, a contemporary Japanese bar & restaurant situated in the heart of Bandra. Inspired by the journey of an experience driven & hungry soul, we are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
           welcomeMessageButtons(phone_number_id, msg_body, from);
         }
       } else if (
