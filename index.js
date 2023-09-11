@@ -224,7 +224,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               ]
             },
             {
-              "title": "Development & Team",
+              "title": "Food",
               "rows": [
                 {
                   "id": "OUR_SERVICE_5_ID",
@@ -237,7 +237,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               ]
             },
             {
-              "title": "Strategy",
+              "title": "Find Us",
               "rows": [
                 {
                   "id": "OUR_SERVICE_7_ID",
@@ -245,19 +245,15 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
                 },
                 {
                   "id": "OUR_SERVICE_8_ID",
-                  "title": "Helpline Number"
+                  "title": "Order Link"
                 }
               ]
             },
             {
-              "title": "Strategy",
+              "title": "Helpline",
               "rows": [
                 {
-                  "id": "OUR_SERVICE_7_ID",
-                  "title": "Order Link"
-                },
-                {
-                  "id": "OUR_SERVICE_8_ID",
+                  "id": "OUR_SERVICE_9_ID",
                   "title": "Contact Us"
                 }
               ]
