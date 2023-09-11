@@ -186,7 +186,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
         "type": "list",
         "header": {
           "type": "text",
-          "text": "*AKINA*"
+          "text": "AKINA"
         },
         "body": {
           "text": msg_body
