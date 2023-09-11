@@ -215,7 +215,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               "rows": [
                 {
                   "id": "OUR_SERVICE_3_ID",
-                  "title": "SECTION_2_ROW_1_TITLE"
+                  "title": "Helpline Number"
                 },
                 {
                   "id": "OUR_SERVICE_4_ID",
