@@ -202,11 +202,11 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               "rows": [
                 {
                   "id": "OUR_SERVICE_1_ID",
-                  "title": "Mobile App Development"
+                  "title": "Timings of Restaurant"
                 },
                 {
                   "id": "OUR_SERVICE_2_ID",
-                  "title": "Web App Development"
+                  "title": "Is it open now?"
                 }
               ]
             },
@@ -219,7 +219,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
                 },
                 {
                   "id": "OUR_SERVICE_4_ID",
-                  "title": "UI & UX Design"
+                  "title": "Top & Best Dishes"
                 }
               ]
             },
@@ -232,7 +232,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
                 },
                 {
                   "id": "OUR_SERVICE_6_ID",
-                  "title": "Team Augmentation"
+                  "title": "Highlights of Restaurant"
                 }
               ]
             },
