@@ -677,11 +677,14 @@ const listId7Response= (phone_number_id, from) => {
       "/messages?access_token=" +
       token,
     data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: { // the text object
-        body: "Location"
+      "messaging_product": "whatsapp",
+      "to": from,
+      "type": "location",
+      "location": {
+        "longitude": "72.83547326581012",
+        "latitude": "19.059717376986885",
+        "name": "AKINA",
+        "address": "Golden Palace, Turner Rd, opposite Mala Sinha Bunglow, Bandra West, Mumbai, Maharashtra 400050"
       }
     },
     headers: { "Content-Type": "application/json" },
