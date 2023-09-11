@@ -767,11 +767,51 @@ const listId6Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Highlights of Restaurant"
+        body: "We at Akina, are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
       }
     },
     headers: { "Content-Type": "application/json" },
   })
+  for(let i=0;i<Ambience.length;i++){
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": from,
+        "type": "image",
+        "image": {
+          "link" : Ambience[i]
+        }
+      },
+      headers: { "Content-Type": "application/json" },
+    })
+  }
+  for(let i=0;i<TopDishes.length;i++){
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": from,
+        "type": "image",
+        "image": {
+          "link" : TopDishes[i]
+        }
+      },
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 }
 
 const listId7Response= (phone_number_id, from) => {
