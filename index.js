@@ -582,12 +582,26 @@ const listId2Response= (phone_number_id, from) => {
   const day = date.getDay();
   const hour = date.getHours();
   const minutes = date.getMinutes();
-  let answer= false
-  // if(day===0){
-  //   if(hour<)
-  // }else if(day===1){
-
-  // }
+  let answer= false;
+  if(day===0 || day===1){
+    if((hour<=1 && minutes<=0)){
+      answer= true;
+    }else if((hour>=12 && minutes>=30) && (hour<=15 && minutes<=30)){
+      answer= true;
+    }else if((hour>=19 && minutes>=30) && (hour<=23 && minutes<=59)){
+      answer= true;
+    }else{
+      answer= false;
+    }
+  }else{
+    if((hour<=1 && minutes<=0)){
+      answer= true;
+    }else if((hour>=19 && minutes>=30) && (hour<=23 && minutes<=59)){
+      answer= true;
+    }else{
+      answer= false;
+    }
+  }
   const reply= answer===true? "Yes, We are open now" : "We are sorry to say that we are closed now";
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -601,7 +615,7 @@ const listId2Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: `${hour}, ${minutes}, ${day}`
+        body: reply
       }
     },
     headers: { "Content-Type": "application/json" },
