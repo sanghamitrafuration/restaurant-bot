@@ -577,6 +577,8 @@ const listId1Response= (phone_number_id, from) => {
 }
 
 const listId2Response= (phone_number_id, from) => {
+  const date = new Date();
+  const day = date.getDay();
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -589,7 +591,7 @@ const listId2Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Monday - 7:30pm-1am, Tuesday - 7:30pm-1am, Wednesday - 7:30pm-1am, Thursday - 7:30pm-1am, Friday : 7:30pm-1am, Saturday - 12:30-3:30pm, 7:30pm-1am, Sunday - 12:30-3:30pm, 7:30pm-1am"
+        body: day
       }
     },
     headers: { "Content-Type": "application/json" },
