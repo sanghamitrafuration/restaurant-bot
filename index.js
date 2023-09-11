@@ -632,6 +632,13 @@ const listId5Response= (phone_number_id, from) => {
                 id: "UNIQUE_BUTTON_ID_2",
                 title: "Bevarages"
               }
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_3",
+                title: "Bar Menu"
+              }
             }
           ]
         }
