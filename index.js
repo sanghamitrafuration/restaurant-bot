@@ -198,7 +198,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
           "button": "About Us",
           "sections": [
             {
-              "title": "App Development",
+              "title": "Timing",
               "rows": [
                 {
                   "id": "OUR_SERVICE_1_ID",
@@ -211,11 +211,11 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               ]
             },
             {
-              "title": "Designs",
+              "title": "Photos",
               "rows": [
                 {
                   "id": "OUR_SERVICE_3_ID",
-                  "title": "Helpline Number"
+                  "title": "Ambience Photos"
                 },
                 {
                   "id": "OUR_SERVICE_4_ID",
@@ -245,11 +245,20 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
                 },
                 {
                   "id": "OUR_SERVICE_8_ID",
-                  "title": "Ambience Photos"
+                  "title": "Helpline Number"
+                }
+              ]
+            },
+            {
+              "title": "Strategy",
+              "rows": [
+                {
+                  "id": "OUR_SERVICE_7_ID",
+                  "title": "Order Link"
                 },
                 {
                   "id": "OUR_SERVICE_8_ID",
-                  "title": "Order link"
+                  "title": "Contact Us"
                 }
               ]
             }
