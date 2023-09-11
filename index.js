@@ -622,22 +622,15 @@ const listId5Response= (phone_number_id, from) => {
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_4",
+                id: "UNIQUE_BUTTON_ID_1",
                 title: "Food Menu"
               }
             },
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_5",
+                id: "UNIQUE_BUTTON_ID_2",
                 title: "Bevarages"
-              }
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_5",
-                title: "Bar Menu"
               }
             }
           ]
@@ -759,14 +752,14 @@ const listId9Response= (phone_number_id, from) => {
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_4",
+                id: "UNIQUE_BUTTON_ID_6",
                 title: "Phone"
               }
             },
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_5",
+                id: "UNIQUE_BUTTON_ID_7",
                 title: "Email"
               }
             }
