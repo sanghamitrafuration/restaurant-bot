@@ -16,21 +16,29 @@ const  app = express().use(body_parser.json()); // creates express http server
 const PORT= process.env.PORT || 1337;
 
 const foodMenu= [
-  "https://i.postimg.cc/y889jJYb/ambience-1.jpg", 
-  "https://i.postimg.cc/q7tKf9Kc/ambience-2.jpg", 
-  "https://i.postimg.cc/1zLqyJ0k/ambience-3.jpg"
+  "https://i.postimg.cc/jS1xkHFQ/food-1.png",
+  "https://i.postimg.cc/nc5gy3nz/food-2.png",
+  "https://i.postimg.cc/sDtH61JG/food-3.png",
+  "https://i.postimg.cc/ZR7VrqRR/food-4.png",
+  "https://i.postimg.cc/Qx5vrpCJ/food-5.png",
+  "https://i.postimg.cc/0ysF5bJR/food-6.png",
+  "https://i.postimg.cc/ZRCDsNX3/food-7.png"
 ];
 const Bevarages= [
-  "", 
-  "", 
-  "",
-  ""
+  "https://i.postimg.cc/wBbwNv3B/bar-12.png"
 ];
 const BarMenu= [
-  "", 
-  "", 
-  "",
-  ""
+  "https://i.postimg.cc/4NTBVj4p/bar-1.png",
+  "https://i.postimg.cc/sxC9PZz3/bar-2.png",
+  "https://i.postimg.cc/02x0bmZf/bar-3.png",
+  "https://i.postimg.cc/QdYQ4zD4/bar-4.png",
+  "https://i.postimg.cc/52rzqF5D/bar-5.png",
+  "https://i.postimg.cc/C5JBZZLP/bar-6.png",
+  "https://i.postimg.cc/Z5WBR5kH/bar-7.png",
+  "https://i.postimg.cc/wBJ1X4js/bar-8.png",
+  "https://i.postimg.cc/xjgc3zng/bar-9.png",
+  "https://i.postimg.cc/tghgZ1B3/bar-10.png",
+  "https://i.postimg.cc/JnMzb1F9/bar-11.png"
 ];
 const Ambience= [
   "https://i.postimg.cc/y889jJYb/ambience-1.jpg", 
@@ -38,10 +46,13 @@ const Ambience= [
   "https://i.postimg.cc/1zLqyJ0k/ambience-3.jpg"
 ];
 const TopDishes= [
-  "", 
-  "", 
-  "",
-  ""
+  "https://i.postimg.cc/d15wrGry/dish-1.png", 
+  "https://i.postimg.cc/fWgMbjw4/dish-2.png", 
+  "https://i.postimg.cc/N04cvRNz/dish-3.png",
+  "https://i.postimg.cc/D0WkGH79/dish-4.png",
+  "https://i.postimg.cc/sgzfFfj1/dish-5.png",
+  "https://i.postimg.cc/Fs5NcFJG/dish-6.png",
+  "https://i.postimg.cc/Znktrj00/dish-7.png"
 ];
 
 
@@ -308,80 +319,35 @@ const buttonId1Response= (phone_number_id, from) => {
       "/messages?access_token=" +
       token,
     data: {
-      "messaging_product": "whatsapp",
-      "recipient_type": "individual",
-      "to": from,
-      "type": "interactive",
-      "interactive": {
-        "type": "list",
-        "header": {
-          "type": "text",
-          "text": "Our Services"
-        },
-        "body": {
-          "text": "Our aim is to provide innovative solutions that cater to the unique needs of each client and drive their business forward."
-        },
-        "footer": {
-          "text": "Click the button to explore more"
-        },
-        "action": {
-          "button": "Services",
-          "sections": [
-            {
-              "title": "App Development",
-              "rows": [
-                {
-                  "id": "OUR_SERVICE_1_ID",
-                  "title": "Mobile App Development"
-                },
-                {
-                  "id": "OUR_SERVICE_2_ID",
-                  "title": "Web App Development"
-                }
-              ]
-            },
-            {
-              "title": "Designs",
-              "rows": [
-                {
-                  "id": "OUR_SERVICE_3_ID",
-                  "title": "SECTION_2_ROW_1_TITLE"
-                },
-                {
-                  "id": "OUR_SERVICE_4_ID",
-                  "title": "UI & UX Design"
-                }
-              ]
-            },
-            {
-              "title": "Development & Team",
-              "rows": [
-                {
-                  "id": "OUR_SERVICE_5_ID",
-                  "title": "SECTION_3_ROW_1_TITLE"
-                },
-                {
-                  "id": "OUR_SERVICE_6_ID",
-                  "title": "Team Augmentation"
-                }
-              ]
-            },
-            {
-              "title": "Strategy",
-              "rows": [
-                {
-                  "id": "OUR_SERVICE_7_ID",
-                  "title": "SECTION_4_ROW_1_TITLE"
-                }
-              ]
-            }
-          ]
-        }
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: { // the text object
+        body: "Food Menu"
       }
     },
     headers: { "Content-Type": "application/json" },
-    
   })
+  for(let i=0;i<foodMenu.length;i++){
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": from,
+        "type": "image",
+        "image": {
+          "link" : foodMenu[i]
+        }
+      },
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 }
 
 const buttonId2Response= (phone_number_id, from) => {
@@ -397,15 +363,71 @@ const buttonId2Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Please click on https://www.furation.tech/index.html#brandlist to see our clients"
+        body: "Bevarages"
       }
     },
     headers: { "Content-Type": "application/json" },
   })
+  for(let i=0;i<Bevarages.length;i++){
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": from,
+        "type": "image",
+        "image": {
+          "link" : Bevarages[i]
+        }
+      },
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 }
 
 const buttonId3Response= (phone_number_id, from, msg_body) => {
-  image
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: { // the text object
+        body: "Bar Menu"
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  })
+  for(let i=0;i<BarMenu.length;i++){
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": from,
+        "type": "image",
+        "image": {
+          "link" : BarMenu[i]
+        }
+      },
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 }
 
 const buttonId4Response= (phone_number_id, from) => {
@@ -602,7 +624,7 @@ const listId3Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Ambience Photos"
+        body: "Here are Photos of the Ambience"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -642,11 +664,31 @@ const listId4Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Top & Best Dishes"
+        body: "Photos of Top Dishes"
       }
     },
     headers: { "Content-Type": "application/json" },
   })
+  for(let i=0;i<TopDishes.length;i++){
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": from,
+        "type": "image",
+        "image": {
+          "link" : TopDishes[i]
+        }
+      },
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 }
 
 const listId5Response= (phone_number_id, from) => {
