@@ -124,6 +124,10 @@ app.post("/webhook", async(req, res) => {
             listId6Response(phone_number_id, from);
           }else if(reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.id==="OUR_SERVICE_7_ID") {
             listId7Response(phone_number_id, from);
+          }else if(reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.id==="OUR_SERVICE_8_ID") {
+            listId8Response(phone_number_id, from);
+          }else if(reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.id==="OUR_SERVICE_9_ID") {
+            listId9Response(phone_number_id, from);
           }else{
             noresponse(phone_number_id, from);
           }
@@ -228,11 +232,11 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               "rows": [
                 {
                   "id": "OUR_SERVICE_5_ID",
-                  "title": "Highlights of Restaurant"
+                  "title": "Menu"
                 },
                 {
                   "id": "OUR_SERVICE_6_ID",
-                  "title": "Menu"
+                  "title": "Highlights of Restaurant"
                 }
               ]
             },
@@ -250,7 +254,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
               ]
             },
             {
-              "title": "Helpline",
+              "title": "Contact",
               "rows": [
                 {
                   "id": "OUR_SERVICE_9_ID",
@@ -379,44 +383,13 @@ const buttonId3Response= (phone_number_id, from, msg_body) => {
       phone_number_id +
       "/messages?access_token=" +
       token,
-    data: { 
+    data: {
       messaging_product: "whatsapp",
       to: from,
-      text: {
-        body: msg_body
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: msg_body
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_4",
-                title: "Email"
-              }
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_5",
-                title: "Phone"
-              }
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_6",
-                title: "Image"
-              }
-            }
-          ]
-        }
+      type: "text",
+      text: { // the text object
+        "preview_url": true,
+        body: "Ambience Photos"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -437,7 +410,7 @@ const buttonId4Response= (phone_number_id, from) => {
       type: "text",
       text: { // the text object
         "preview_url": true,
-        body: "Please email on hello@furation.tech"
+        body: "Top & Best Dishes"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -556,7 +529,7 @@ const listId1Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Thank you for your enquiry about Mobile App Development. We have received your response. Our team will contact you soon."
+        body: "Monday - 7:30pm-1am, Tuesday - 7:30pm-1am, Wednesday - 7:30pm-1am, Thursday - 7:30pm-1am, Friday : 7:30pm-1am, Saturday - 12:30-3:30pm, 7:30pm-1am, Sunday - 12:30-3:30pm, 7:30pm-1am"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -576,7 +549,7 @@ const listId2Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Thank you for your enquiry about Web App Development. We have received your response. Our team will contact you soon."
+        body: "Monday - 7:30pm-1am, Tuesday - 7:30pm-1am, Wednesday - 7:30pm-1am, Thursday - 7:30pm-1am, Friday : 7:30pm-1am, Saturday - 12:30-3:30pm, 7:30pm-1am, Sunday - 12:30-3:30pm, 7:30pm-1am"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -591,12 +564,44 @@ const listId3Response= (phone_number_id, from) => {
       phone_number_id +
       "/messages?access_token=" +
       token,
-    data: {
+    data: { 
       messaging_product: "whatsapp",
       to: from,
-      type: "text",
-      text: { // the text object
-        body: "Thank you for your enquiry about Website Design & Development. We have received your response. Our team will contact you soon."
+      text: {
+        body: msg_body
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: msg_body
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_4",
+                title: "Email"
+              }
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_5",
+                title: "Phone"
+              }
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_6",
+                title: "Image"
+              }
+            }
+          ]
+        }
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -631,12 +636,37 @@ const listId5Response= (phone_number_id, from) => {
       phone_number_id +
       "/messages?access_token=" +
       token,
-    data: {
+    data: { 
       messaging_product: "whatsapp",
       to: from,
-      type: "text",
-      text: { // the text object
-        body: "Thank you for your enquiry about Custom Software Development. We have received your response. Our team will contact you soon."
+      text: {
+        body: msg_body
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: msg_body
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_4",
+                title: "Email"
+              }
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_5",
+                title: "Phone"
+              }
+            }
+          ]
+        }
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -656,7 +686,7 @@ const listId6Response= (phone_number_id, from) => {
       to: from,
       type: "text",
       text: { // the text object
-        body: "Thank you for your enquiry about Team Augmentation. We have received your response. Our team will contact you soon."
+        body: "Highlights of Restaurant"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -664,6 +694,71 @@ const listId6Response= (phone_number_id, from) => {
 }
 
 const listId7Response= (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: { // the text object
+        body: "Thank you for your enquiry about Design & Product Strategy. We have received your response. Our team will contact you soon."
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  })
+}
+
+const listId8Response= (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: { 
+      messaging_product: "whatsapp",
+      to: from,
+      text: {
+        body: msg_body
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: msg_body
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_4",
+                title: "Zomato"
+              }
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_5",
+                title: "Swiggy"
+              }
+            }
+          ]
+        }
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  })
+}
+
+const listId9Response= (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
