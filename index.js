@@ -235,7 +235,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
           "text": "AKINA"
         },
         "body": {
-          "text": from
+          "text": msg_body
         },
         "footer": {
           "text": "Click the button to explore more"
