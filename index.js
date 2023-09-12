@@ -235,7 +235,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
           "text": "AKINA"
         },
         "body": {
-          "text": msg_body
+          "text": phone_number_id
         },
         "footer": {
           "text": "Click the button to explore more"
@@ -1009,6 +1009,7 @@ app.post("/sendmessage", (req, res) => {
       })
     }
   } catch (error) {
+    console.log(error);
     res.send({"error" : error})
   }
 });
