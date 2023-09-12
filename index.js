@@ -935,7 +935,7 @@ app.post("/sendmessage", (req, res) => {
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
           "https://graph.facebook.com/v12.0/" +
-          120839521101670 +
+          body.phone_number_id +
           "/messages?access_token=" +
           token,
         data: {
@@ -948,12 +948,12 @@ app.post("/sendmessage", (req, res) => {
         },
         headers: { "Content-Type": "application/json" },
       })
-      for(let i=0;i<image.length;i++){
+      for(let i=0;i<body.image.length;i++){
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
             "https://graph.facebook.com/v12.0/" +
-            120839521101670 +
+            body.phone_number_id +
             "/messages?access_token=" +
             token,
           data: {
@@ -962,19 +962,20 @@ app.post("/sendmessage", (req, res) => {
             "to": body.recipient,
             "type": "image",
             "image": {
-              "link" : image[i]
+              "link" : body.image[i]
             }
           },
           headers: { "Content-Type": "application/json" },
         })
       }
+      res.send({"message" : "Message and Images sent"})
     }else if(body.image){
-      for(let i=0;i<image.length;i++){
+      for(let i=0;i<body.image.length;i++){
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
             "https://graph.facebook.com/v12.0/" +
-            120839521101670 +
+            body.phone_number_id +
             "/messages?access_token=" +
             token,
           data: {
@@ -983,18 +984,19 @@ app.post("/sendmessage", (req, res) => {
             "to": body.recipient,
             "type": "image",
             "image": {
-              "link" : image[i]
+              "link" : body.image[i]
             }
           },
           headers: { "Content-Type": "application/json" },
         })
       }
+      res.send({"message" : "Images sent"})
     }else{
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
           "https://graph.facebook.com/v12.0/" +
-          120839521101670 +
+          body.phone_number_id +
           "/messages?access_token=" +
           token,
         data: {
@@ -1007,6 +1009,7 @@ app.post("/sendmessage", (req, res) => {
         },
         headers: { "Content-Type": "application/json" },
       })
+      res.send({"message" : "Messagesent"})
     }
   } catch (error) {
     console.log(error);
