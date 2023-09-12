@@ -235,7 +235,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
           "text": "AKINA"
         },
         "body": {
-          "text": phone_number_id
+          "text": msg_body
         },
         "footer": {
           "text": "Click the button to explore more"
@@ -935,7 +935,7 @@ app.post("/sendmessage", (req, res) => {
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
           "https://graph.facebook.com/v12.0/" +
-          phone_number_id +
+          120839521101670 +
           "/messages?access_token=" +
           token,
         data: {
@@ -953,7 +953,7 @@ app.post("/sendmessage", (req, res) => {
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
             "https://graph.facebook.com/v12.0/" +
-            phone_number_id +
+            120839521101670 +
             "/messages?access_token=" +
             token,
           data: {
@@ -974,7 +974,7 @@ app.post("/sendmessage", (req, res) => {
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
             "https://graph.facebook.com/v12.0/" +
-            phone_number_id +
+            120839521101670 +
             "/messages?access_token=" +
             token,
           data: {
@@ -994,7 +994,7 @@ app.post("/sendmessage", (req, res) => {
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
           "https://graph.facebook.com/v12.0/" +
-          phone_number_id +
+          120839521101670 +
           "/messages?access_token=" +
           token,
         data: {
