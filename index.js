@@ -22,7 +22,7 @@ const foodMenu= [
   "https://i.postimg.cc/ZR7VrqRR/food-4.png",
   "https://i.postimg.cc/Qx5vrpCJ/food-5.png",
   "https://i.postimg.cc/0ysF5bJR/food-6.png",
-  "https://i.postimg.cc/ZRCDsNX3/food-7.png"
+  "https://i.postimg.cc/ZRCDsNX3/food-7.png" 
 ];
 const Beverages= [
   "https://i.postimg.cc/wBbwNv3B/bar-12.png"
