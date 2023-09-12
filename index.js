@@ -235,7 +235,7 @@ const welcomeMessageMenu= (phone_number_id, msg_body, from) => {
           "text": "AKINA"
         },
         "body": {
-          "text": msg_body
+          "text": from
         },
         "footer": {
           "text": "Click the button to explore more"
@@ -927,88 +927,88 @@ const listId9Response= (phone_number_id, from) => {
   })
 }
 
-// app.post("/sendmessage", (req, res) => {
-//   try {
-//     let body= req.body;
-//     if(body.message && body.image){
-//       axios({
-//         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-//         url:
-//           "https://graph.facebook.com/v12.0/" +
-//           phone_number_id +
-//           "/messages?access_token=" +
-//           token,
-//         data: {
-//           messaging_product: "whatsapp",
-//           to: body.recipient,
-//           type: "text",
-//           text: { // the text object
-//             body: body.message
-//           }
-//         },
-//         headers: { "Content-Type": "application/json" },
-//       })
-//       for(let i=0;i<image.length;i++){
-//         axios({
-//           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-//           url:
-//             "https://graph.facebook.com/v12.0/" +
-//             phone_number_id +
-//             "/messages?access_token=" +
-//             token,
-//           data: {
-//             "messaging_product": "whatsapp",
-//             "recipient_type": "individual",
-//             "to": body.recipient,
-//             "type": "image",
-//             "image": {
-//               "link" : image[i]
-//             }
-//           },
-//           headers: { "Content-Type": "application/json" },
-//         })
-//       }
-//     }else if(body.image){
-//       for(let i=0;i<image.length;i++){
-//         axios({
-//           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-//           url:
-//             "https://graph.facebook.com/v12.0/" +
-//             phone_number_id +
-//             "/messages?access_token=" +
-//             token,
-//           data: {
-//             "messaging_product": "whatsapp",
-//             "recipient_type": "individual",
-//             "to": body.recipient,
-//             "type": "image",
-//             "image": {
-//               "link" : image[i]
-//             }
-//           },
-//           headers: { "Content-Type": "application/json" },
-//         })
-//       }
-//     }else{
-//       axios({
-//         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-//         url:
-//           "https://graph.facebook.com/v12.0/" +
-//           phone_number_id +
-//           "/messages?access_token=" +
-//           token,
-//         data: {
-//           messaging_product: "whatsapp",
-//           to: body.recipient,
-//           type: "text",
-//           text: { // the text object
-//             body: body.message
-//           }
-//         },
-//         headers: { "Content-Type": "application/json" },
-//       })
-//     }
-//   } catch (error) {
-//     res.send({"error" : error})
-//   }
-// });
+app.post("/sendmessage", (req, res) => {
+  try {
+    let body= req.body;
+    if(body.message && body.image){
+      axios({
+        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+        url:
+          "https://graph.facebook.com/v12.0/" +
+          phone_number_id +
+          "/messages?access_token=" +
+          token,
+        data: {
+          messaging_product: "whatsapp",
+          to: body.recipient,
+          type: "text",
+          text: { // the text object
+            body: body.message
+          }
+        },
+        headers: { "Content-Type": "application/json" },
+      })
+      for(let i=0;i<image.length;i++){
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id +
+            "/messages?access_token=" +
+            token,
+          data: {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": body.recipient,
+            "type": "image",
+            "image": {
+              "link" : image[i]
+            }
+          },
+          headers: { "Content-Type": "application/json" },
+        })
+      }
+    }else if(body.image){
+      for(let i=0;i<image.length;i++){
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id +
+            "/messages?access_token=" +
+            token,
+          data: {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": body.recipient,
+            "type": "image",
+            "image": {
+              "link" : image[i]
+            }
+          },
+          headers: { "Content-Type": "application/json" },
+        })
+      }
+    }else{
+      axios({
+        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+        url:
+          "https://graph.facebook.com/v12.0/" +
+          phone_number_id +
+          "/messages?access_token=" +
+          token,
+        data: {
+          messaging_product: "whatsapp",
+          to: body.recipient,
+          type: "text",
+          text: { // the text object
+            body: body.message
+          }
+        },
+        headers: { "Content-Type": "application/json" },
+      })
+    }
+  } catch (error) {
+    res.send({"error" : error})
+  }
+});
