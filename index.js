@@ -59,7 +59,7 @@ const TopDishes= [
 
 
 // Sets server port and logs message on success
-app.listen(PORT, () => console.log(`webhook is listening at ${PORT}`));
+// app.listen(PORT, () => console.log(`webhook is listening at ${PORT}`));
 
 app.get("/", (req, res)=>res.send("Welcome"));
 
@@ -1113,12 +1113,12 @@ app.post("/bulkmessage", (req, res) => {
   }
 });
 
-app.listen(process.env.portt, async () => {
+app.listen(process.env.PORT, async () => {
   try {
     await connection;
     console.log("Connected to DB");
   } catch (error) {
     console.log({ error: error });
   }
-  console.log(`Running at port ${process.env.portt}`);
+  console.log(`webhook is listening at ${PORT}`)
 });
