@@ -337,7 +337,7 @@ const buttonId1Response= (phone_number_id, from) => {
         "to": from,
         "type": "document",
         "document": {
-          "link": "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing",
+          "link": "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
         }
       },
       headers: { "Content-Type": "application/json" },
