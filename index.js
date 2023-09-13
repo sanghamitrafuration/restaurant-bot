@@ -332,7 +332,7 @@ const buttonId1Response= (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   })
-  for(let i=0;i<foodMenu.length;i++){
+  // for(let i=0;i<foodMenu.length;i++){
     axios({
       method: "POST", // Required, HTTP method, a string, e.g. POST, GET
       url:
@@ -344,14 +344,14 @@ const buttonId1Response= (phone_number_id, from) => {
         "messaging_product": "whatsapp",
         "recipient_type": "individual",
         "to": from,
-        "type": "image",
-        "image": {
-          "link" : foodMenu[i]
+        "type": "document",
+        "document": {
+          "link": "https://online.flippingbook.com/view/738024625/",
         }
       },
       headers: { "Content-Type": "application/json" },
     })
-  }
+  // }
 }
 
 const buttonId2Response= (phone_number_id, from) => {
