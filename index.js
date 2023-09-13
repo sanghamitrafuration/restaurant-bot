@@ -75,85 +75,74 @@ app.post("/webhook", async(req, res) => {
 
     // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
     if (reqData.object) {
-      const phone_number_id = reqData.entry[0].changes[0].value.metadata.phone_number_id;
-      const from = reqData.entry[0].changes[0].value.messages[0].from;
-      const name = reqData.entry[0].changes[0].value.contacts[0].profile.name;
-      const ifExist= await UserModel.find({"recipient" : from});
-      console.log(ifExist);
-      if(ifExist.length===0){
-        const newdata= new UserModel({"name" : name, "recipient" : from, "phone_number_id" : phone_number_id});
-        await newdata.save();
-      }
-      if (
-        reqData.entry &&
+      if(reqData.entry &&
         reqData.entry[0].changes &&
         reqData.entry[0].changes[0] &&
         reqData.entry[0].changes[0].value.messages &&
-        reqData.entry[0].changes[0].value.messages[0] &&
-        reqData.entry[0].changes[0].value.messages[0].type==="text"
-      ) {
-        let msg_body = reqData.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-        console.log(reqData.entry[0].changes[0].value.messages[0], "body.entry[0].changes[0].value.messages[0]")
-        if(msg_body=="Hi" || msg_body=="hi" || msg_body=="Hey" || msg_body=="hey" || msg_body=="Hello" || msg_body=="hello"){
-          msg_body="Welcome to *AKINA* . AKINA Mumbai, a contemporary Japanese bar & restaurant situated in the heart of Bandra. Inspired by the journey of an experience driven & hungry soul, we are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
-          welcomeMessageMenu(phone_number_id, msg_body, from);
+        reqData.entry[0].changes[0].value.messages[0]){
+        const phone_number_id = reqData.entry[0].changes[0].value.metadata.phone_number_id;
+        const from = reqData.entry[0].changes[0].value.messages[0].from;
+        const name = reqData.entry[0].changes[0].value.contacts[0].profile.name;
+        const ifExist= await UserModel.find({"recipient" : from});
+        if(ifExist.length===0){
+          const newdata= new UserModel({"name" : name, "recipient" : from, "phone_number_id" : phone_number_id});
+          await newdata.save();
         }
-        else if(msg_body=="Ok" || msg_body=="ok" || msg_body=="thanks"){
-          msg_body= "Thank you for contacting us";
-          okresponse(phone_number_id, from, msg_body);
-        }
-        else{
-          msg_body="Welcome to *AKINA* . AKINA Mumbai, a contemporary Japanese bar & restaurant situated in the heart of Bandra. Inspired by the journey of an experience driven & hungry soul, we are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
-          welcomeMessageMenu(phone_number_id, msg_body, from);
-        }
-      } else if (
-        reqData.entry &&
-        reqData.entry[0].changes &&
-        reqData.entry[0].changes[0] &&
-        reqData.entry[0].changes[0].value.messages &&
-        reqData.entry[0].changes[0].value.messages[0] &&
-        reqData.entry[0].changes[0].value.messages[0].type==="interactive" &&
-        reqData.entry[0].changes[0].value.messages[0].interactive &&
-        reqData.entry[0].changes[0].value.messages[0].interactive.type==="button_reply" &&
-        reqData.entry[0].changes[0].value.messages[0].interactive.button_reply &&
-        reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id
-      ){
-        let msg_body = reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title; // extract the message text from the webhook payload
-        console.log(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title, "reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title")
+        if (
+          reqData.entry[0].changes[0].value.messages[0].type==="text"
+        ) {
+          let msg_body = reqData.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
+          console.log(reqData.entry[0].changes[0].value.messages[0], "body.entry[0].changes[0].value.messages[0]")
+          if(msg_body=="Hi" || msg_body=="hi" || msg_body=="Hey" || msg_body=="hey" || msg_body=="Hello" || msg_body=="hello"){
+            msg_body="Welcome to *AKINA* . AKINA Mumbai, a contemporary Japanese bar & restaurant situated in the heart of Bandra. Inspired by the journey of an experience driven & hungry soul, we are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
+            welcomeMessageMenu(phone_number_id, msg_body, from);
+          }
+          else if(msg_body=="Ok" || msg_body=="ok" || msg_body=="thanks"){
+            msg_body= "Thank you for contacting us";
+            okresponse(phone_number_id, from, msg_body);
+          }
+          else{
+            msg_body="Welcome to *AKINA* . AKINA Mumbai, a contemporary Japanese bar & restaurant situated in the heart of Bandra. Inspired by the journey of an experience driven & hungry soul, we are carefully treading the lines between heritage and innovation. We offer rich beverage experiences and contemporary Japanese cuisine created as an ode to high-quality ingredients, traditional & modern cooking techniques and creative mixology and the world of cinematic experiences to create eccentric and memorable moments."
+            welcomeMessageMenu(phone_number_id, msg_body, from);
+          }
+        } else if (
+          reqData.entry[0].changes[0].value.messages[0].type==="interactive" &&
+          reqData.entry[0].changes[0].value.messages[0].interactive &&
+          reqData.entry[0].changes[0].value.messages[0].interactive.type==="button_reply" &&
+          reqData.entry[0].changes[0].value.messages[0].interactive.button_reply &&
+          reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id
+        ){
+          let msg_body = reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title; // extract the message text from the webhook payload
+          console.log(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title, "reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title")
 
-        if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_1"){
-          buttonId1Response(phone_number_id, from);
-        }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_2") {
-          buttonId2Response(phone_number_id, from);
-        }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_3") {
-          buttonId3Response(phone_number_id, from, msg_body);
-        }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_4") {
-          buttonId4Response(phone_number_id, from);
-        }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_5") {
-          buttonId5Response(phone_number_id, from);
-        }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_6") {
-          buttonId6Response(phone_number_id, from);
-        }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_7") {
-          buttonId7Response(phone_number_id, from);
-        }else{
-          noresponse(phone_number_id, from);
-        }
-        res.sendStatus(200);
-      }else if(
-        reqData.entry &&
-        reqData.entry[0].changes &&
-        reqData.entry[0].changes[0] &&
-        reqData.entry[0].changes[0].value.messages &&
-        reqData.entry[0].changes[0].value.messages[0] &&
-        reqData.entry[0].changes[0].value.messages[0].type==="interactive" &&
-        reqData.entry[0].changes[0].value.messages[0].interactive &&
-        reqData.entry[0].changes[0].value.messages[0].interactive.type==="list_reply" &&
-        reqData.entry[0].changes[0].value.messages[0].interactive.list_reply &&
-        reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.id
-      ){
+          if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_1"){
+            buttonId1Response(phone_number_id, from);
+          }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_2") {
+            buttonId2Response(phone_number_id, from);
+          }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_3") {
+            buttonId3Response(phone_number_id, from, msg_body);
+          }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_4") {
+            buttonId4Response(phone_number_id, from);
+          }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_5") {
+            buttonId5Response(phone_number_id, from);
+          }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_6") {
+            buttonId6Response(phone_number_id, from);
+          }else if(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id==="UNIQUE_BUTTON_ID_7") {
+            buttonId7Response(phone_number_id, from);
+          }else{
+            noresponse(phone_number_id, from);
+          }
+          res.sendStatus(200);
+        }else if(
+          reqData.entry[0].changes[0].value.messages[0].type==="interactive" &&
+          reqData.entry[0].changes[0].value.messages[0].interactive &&
+          reqData.entry[0].changes[0].value.messages[0].interactive.type==="list_reply" &&
+          reqData.entry[0].changes[0].value.messages[0].interactive.list_reply &&
+          reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.id
+        ){
           let msg_body = reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.title; // extract the message text from the webhook payload
           console.log(reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.title, "reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.title")
-  
+    
           if(reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.id==="OUR_SERVICE_1_ID"){
             listId1Response(phone_number_id, from);
           }else if(reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.id==="OUR_SERVICE_2_ID") {
@@ -176,8 +165,9 @@ app.post("/webhook", async(req, res) => {
             noresponse(phone_number_id, from);
           }
           res.sendStatus(200);
+        }
       }
-     }
+    }
     else {
       // Return a '404 Not Found' if event is not from a WhatsApp API
       res.sendStatus(404);
