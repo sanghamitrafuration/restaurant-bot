@@ -336,7 +336,7 @@ const buttonId1Response= (phone_number_id, from) => {
         "to": from,
         "type": "document",
         "document": {
-          "link": "https://online.flippingbook.com/view/738024625/",
+          "link": "https://www.dropbox.com/scl/fi/j6nnzwucdeoonzbzou545/food-1.pdf?rlkey=4jyqugv6rxn3e2017xoeics82&dl=0",
         }
       },
       headers: { "Content-Type": "application/json" },
