@@ -11,6 +11,7 @@ const token = process.env.WHATSAPP_TOKEN;
 // Imports dependencies and set up http server
 const express = require("express");
 const body_parser = require("body-parser");
+const { UserModel } = require("./model/user-model");
 const axios = require("axios").default;
 const  app = express().use(body_parser.json()); // creates express http server
 const PORT= process.env.PORT || 1337;
@@ -73,6 +74,15 @@ app.post("/webhook", async(req, res) => {
 
     // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
     if (reqData.object) {
+      const phone_number_id = reqData.entry[0].changes[0].value.metadata.phone_number_id;
+      const from = reqData.entry[0].changes[0].value.messages[0].from;
+      const name = reqData.entry[0].changes[0].value.contacts[0].profile.name;
+      const ifExist= await UserModel.find({"recipient" : from});
+      console.log(ifExist);
+      if(ifExist.length===0){
+        const newdata= new UserModel({"name" : name, "recipient" : from, "phone_number_id" : phone_number_id});
+        await newdata.save();
+      }
       if (
         reqData.entry &&
         reqData.entry[0].changes &&
@@ -81,9 +91,6 @@ app.post("/webhook", async(req, res) => {
         reqData.entry[0].changes[0].value.messages[0] &&
         reqData.entry[0].changes[0].value.messages[0].type==="text"
       ) {
-        let phone_number_id =
-        reqData.entry[0].changes[0].value.metadata.phone_number_id;
-        let from = reqData.entry[0].changes[0].value.messages[0].from;// extract the phone number from the webhook payload
         let msg_body = reqData.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
         console.log(reqData.entry[0].changes[0].value.messages[0], "body.entry[0].changes[0].value.messages[0]")
         if(msg_body=="Hi" || msg_body=="hi" || msg_body=="Hey" || msg_body=="hey" || msg_body=="Hello" || msg_body=="hello"){
@@ -110,9 +117,6 @@ app.post("/webhook", async(req, res) => {
         reqData.entry[0].changes[0].value.messages[0].interactive.button_reply &&
         reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.id
       ){
-        let phone_number_id =
-        reqData.entry[0].changes[0].value.metadata.phone_number_id;
-        let from = reqData.entry[0].changes[0].value.messages[0].from;// extract the phone number from the webhook payload
         let msg_body = reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title; // extract the message text from the webhook payload
         console.log(reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title, "reqData.entry[0].changes[0].value.messages[0].interactive.button_reply.title")
 
@@ -146,9 +150,6 @@ app.post("/webhook", async(req, res) => {
         reqData.entry[0].changes[0].value.messages[0].interactive.list_reply &&
         reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.id
       ){
-        let phone_number_id =
-          reqData.entry[0].changes[0].value.metadata.phone_number_id;
-          let from = reqData.entry[0].changes[0].value.messages[0].from;// extract the phone number from the webhook payload
           let msg_body = reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.title; // extract the message text from the webhook payload
           console.log(reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.title, "reqData.entry[0].changes[0].value.messages[0].interactive.list_reply.title")
   
@@ -1015,4 +1016,109 @@ app.post("/sendmessage", (req, res) => {
     console.log(error);
     res.send({"error" : error})
   }
+});
+
+
+app.post("/bulkmessage", (req, res) => {
+  try {
+    let body= req.body;
+    let recipient= body.excel.phone;
+    let phone_number_id= body.excel.phone_number_id;
+    if(body.message && body.image){
+      for(let j=0;j<recipient.length;j++){
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id[j] +
+            "/messages?access_token=" +
+            token,
+          data: {
+            messaging_product: "whatsapp",
+            to: recipient[j],
+            type: "text",
+            text: { // the text object
+              body: body.message
+            }
+          },
+          headers: { "Content-Type": "application/json" },
+        })
+        for(let i=0;i<body.image.length;i++){
+          axios({
+            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+            url:
+              "https://graph.facebook.com/v12.0/" +
+              phone_number_id[j] +
+              "/messages?access_token=" +
+              token,
+            data: {
+              "messaging_product": "whatsapp",
+              "recipient_type": "individual",
+              "to": recipient[j],
+              "type": "image",
+              "image": {
+                "link" : body.image[i]
+              }
+            },
+            headers: { "Content-Type": "application/json" },
+          })
+        }
+      }
+      res.send({"message" : "Message and Images sent"})
+    }else if(body.image){
+      for(let i=0;i<body.image.length;i++){
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id[j] +
+            "/messages?access_token=" +
+            token,
+          data: {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": recipient[j],
+            "type": "image",
+            "image": {
+              "link" : body.image[i]
+            }
+          },
+          headers: { "Content-Type": "application/json" },
+        })
+      }
+      res.send({"message" : "Images sent"})
+    }else{
+      axios({
+        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+        url:
+          "https://graph.facebook.com/v12.0/" +
+          phone_number_id[j] +
+          "/messages?access_token=" +
+          token,
+        data: {
+          messaging_product: "whatsapp",
+          to: recipient[j],
+          type: "text",
+          text: { // the text object
+            body: body.message
+          }
+        },
+        headers: { "Content-Type": "application/json" },
+      })
+      res.send({"message" : "Messagesent"})
+    }
+  } catch (error) {
+    console.log(error);
+    res.send({"error" : error})
+  }
+});
+
+app.listen(process.env.portt, async () => {
+  try {
+    await connection;
+    console.log("Connected to DB");
+  } catch (error) {
+    console.log({ error: error });
+  }
+  console.log(`Running at port ${process.env.portt}`);
 });
