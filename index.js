@@ -570,7 +570,7 @@ const listId1Response= (phone_number_id, from) => {
 }
 
 const listId2Response= (phone_number_id, from) => {
-  const date = new getUTCDate()();
+  const date = new Date();
   const day = date.getDay();
   const hour = date.getHours();
   const minutes = date.getMinutes();
