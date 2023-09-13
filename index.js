@@ -417,10 +417,17 @@ const buttonId1Response = (phone_number_id, from) => {
       messaging_product: "whatsapp",
       recipient_type: "individual",
       to: from,
-      type: "document",
-      document: {
-        link: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
-      }
+      type: "file", // Use "file" instead of "document"
+      file: {
+        url: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
+      },
+      // messaging_product: "whatsapp",
+      // recipient_type: "individual",
+      // to: from,
+      // type: "document",
+      // document: {
+      //   link: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
+      // }
     },
     headers: { "Content-Type": "application/json" },
   });
