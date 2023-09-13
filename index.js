@@ -406,6 +406,7 @@ const buttonId1Response = (phone_number_id, from) => {
     headers: { "Content-Type": "application/json" },
   });
   // for(let i=0;i<foodMenu.length;i++){
+
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -417,10 +418,17 @@ const buttonId1Response = (phone_number_id, from) => {
       messaging_product: "whatsapp",
       recipient_type: "individual",
       to: from,
-      type: "document",
-      document: {
-        link: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
-      }
+      type: "text",
+      text: {
+        body: "Here is the PDF menu:",
+        link: {
+          url: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
+        },
+      },
+      // type: "document",
+      // document: {
+      //   link: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
+      // },
     },
     headers: { "Content-Type": "application/json" },
   });
