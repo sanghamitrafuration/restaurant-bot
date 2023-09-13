@@ -325,8 +325,12 @@ const buttonId1Response= (phone_number_id, from) => {
   })
   // for(let i=0;i<foodMenu.length;i++){
     axios({
-      method: "POST",
-      url: `https://graph.facebook.com/v12.0/${phone_number_id}/messages?access_token=${token}`,
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
       data: {
         messaging_product: "whatsapp",
         recipient_type: "individual",
@@ -334,29 +338,10 @@ const buttonId1Response= (phone_number_id, from) => {
         type: "document",
         document: {
           link: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
-          content_type: "application/pdf" // Specify the content type as PDF
         }
       },
       headers: { "Content-Type": "application/json" },
-    });
-    // axios({
-    //   method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    //   url:
-    //     "https://graph.facebook.com/v12.0/" +
-    //     phone_number_id +
-    //     "/messages?access_token=" +
-    //     token,
-    //   data: {
-    //     messaging_product: "whatsapp",
-    //     recipient_type: "individual",
-    //     to: from,
-    //     type: "document",
-    //     document: {
-    //       link: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
-    //     }
-    //   },
-    //   headers: { "Content-Type": "application/json" },
-    // })
+    })
   // }
 }
 
@@ -585,7 +570,7 @@ const listId1Response= (phone_number_id, from) => {
 }
 
 const listId2Response= (phone_number_id, from) => {
-  const date = new Date();
+  const date = new getUTCDate()();
   const day = date.getDay();
   const hour = date.getHours();
   const minutes = date.getMinutes();
