@@ -336,7 +336,7 @@ const buttonId1Response= (phone_number_id, from) => {
         "to": from,
         "type": "document",
         "document": {
-          "link": "https://online.flippingbook.com/view/738024625/",
+          "link": "https://online.flippingbook.com/view/738024625/.pdf",
         }
       },
       headers: { "Content-Type": "application/json" },
