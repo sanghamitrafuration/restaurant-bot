@@ -332,12 +332,12 @@ const buttonId1Response= (phone_number_id, from) => {
         "/messages?access_token=" +
         token,
       data: {
-        "messaging_product": "whatsapp",
-        "recipient_type": "individual",
-        "to": from,
-        "type": "document",
-        "document": {
-          "link": "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: from,
+        type: "document",
+        document: {
+          link: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf",
         }
       },
       headers: { "Content-Type": "application/json" },
