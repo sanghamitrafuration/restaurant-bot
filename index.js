@@ -335,7 +335,7 @@ const buttonId1Response= (phone_number_id, from) => {
         "recipient_type": "individual",
         "to": from,
         "type": "pdf",
-        "document": {
+        "pdf": {
           "link": "https://online.flippingbook.com/view/738024625/",
         }
       },
