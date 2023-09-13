@@ -344,7 +344,7 @@ const buttonId1Response= (phone_number_id, from) => {
         "messaging_product": "whatsapp",
         "recipient_type": "individual",
         "to": from,
-        "type": "document",
+        "type": "pdf",
         "document": {
           "link": "https://online.flippingbook.com/view/738024625/",
         }
