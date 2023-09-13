@@ -17,7 +17,6 @@ const axios = require("axios").default;
 const  app = express().use(body_parser.json()); // creates express http server
 const PORT= process.env.PORT || 1337;
 
-import pdf from "./images/images/food-1.pdf";
 
 const foodMenu= [
   "https://i.postimg.cc/jS1xkHFQ/food-1.png",
@@ -338,7 +337,7 @@ const buttonId1Response= (phone_number_id, from) => {
         "to": from,
         "type": "document",
         "document": {
-          "link": pdf
+          "link": "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing",
         }
       },
       headers: { "Content-Type": "application/json" },
