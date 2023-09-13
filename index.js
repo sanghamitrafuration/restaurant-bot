@@ -12,6 +12,7 @@ const token = process.env.WHATSAPP_TOKEN;
 const express = require("express");
 const body_parser = require("body-parser");
 const { UserModel } = require("./model/user-model");
+const { connection } = require("./configs/db");
 const axios = require("axios").default;
 const  app = express().use(body_parser.json()); // creates express http server
 const PORT= process.env.PORT || 1337;
