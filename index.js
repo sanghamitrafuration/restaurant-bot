@@ -54,7 +54,8 @@ const TopDishes = [
   "https://i.postimg.cc/Znktrj00/dish-7.png",
 ];
 
-const pdfLink="https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf";
+const pdfLink =
+  "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=sharing.pdf";
 // Sets server port and logs message on success
 // app.listen(PORT, () => console.log(`webhook is listening at ${PORT}`));
 
@@ -422,6 +423,7 @@ const buttonId1Response = (phone_number_id, from) => {
       type: "document",
       document: {
         link: pdfLink,
+        mime_type: "application/pdf",
       },
     },
     headers: { "Content-Type": "application/json" },
