@@ -567,12 +567,11 @@ const listId1Response= (phone_number_id, from) => {
       "/messages?access_token=" +
       token,
     data: {
-      "messaging_product": "whatsapp",
-      "recipient_type": "individual",
-      "to": from,
-      "type": "image",
-      "image": {
-        "link" : "https://i.postimg.cc/rp8kMWV3/time-akina.png"
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: { // the text object
+        body: "Monday - 7:30pm-1am \n Tuesday - 7:30pm-1am \n Wednesday - 7:30pm-1am \n Thursday - 7:30pm-1am \n Friday - 7:30pm-1am \n Saturday - 12:30pm-3:30pm, 7:30pm-1am \n Sunday - 12:30pm-3:30pm, 7:30pm-1am"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -585,7 +584,7 @@ const listId2Response= (phone_number_id, from) => {
   const hour = date.getHours();
   const minutes = date.getMinutes();
   let answer= false;
-  if(day===0 || day===1){
+  if(day===0 || day===6){
     if((hour<=1 && minutes<=0)){
       answer= true;
     }else if((hour>=12 && minutes>=30) && (hour<=15 && minutes<=30)){
