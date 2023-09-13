@@ -17,6 +17,8 @@ const axios = require("axios").default;
 const  app = express().use(body_parser.json()); // creates express http server
 const PORT= process.env.PORT || 1337;
 
+import pdf from "./images/images/food-1.pdf";
+
 const foodMenu= [
   "https://i.postimg.cc/jS1xkHFQ/food-1.png",
   "https://i.postimg.cc/nc5gy3nz/food-2.png",
@@ -336,7 +338,7 @@ const buttonId1Response= (phone_number_id, from) => {
         "to": from,
         "type": "document",
         "document": {
-          "link": "https://www.dropbox.com/scl/fi/j6nnzwucdeoonzbzou545/food-1.pdf?rlkey=4jyqugv6rxn3e2017xoeics82&dl=0",
+          "link": pdf
         }
       },
       headers: { "Content-Type": "application/json" },
