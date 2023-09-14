@@ -16,7 +16,7 @@ const axios = require("axios").default;
 const app = express().use(body_parser.json()); // creates express http server
 const PORT = process.env.PORT || 1337;
 
-// import Food from "./images/food-1";
+import Food from "./images/food-1.pdf";
 
 const foodMenu = [
   "https://i.postimg.cc/jS1xkHFQ/food-1.png",
