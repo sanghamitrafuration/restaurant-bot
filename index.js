@@ -699,6 +699,7 @@ const listId2Response = (phone_number_id, from) => {
   const day = date.getDay();
   const hour = date.getHours();
   const minutes = date.getMinutes();
+  console.log(hour, minutes);
   let answer = false;
   if (day === 0 || day === 6) {
     if (hour < 1) {
