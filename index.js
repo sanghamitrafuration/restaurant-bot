@@ -13,10 +13,12 @@ const body_parser = require("body-parser");
 const { UserModel } = require("./model/user-model");
 const { connection } = require("./configs/db");
 const axios = require("axios").default;
-const app = express().use(body_parser.json()); // creates express http server
+const app = express()
+app.use(body_parser.json()); // creates express http server
+app.use("/static", express.static("public"))
 const PORT = process.env.PORT || 1337;
 
-import Food from "./images/food-1.pdf";
+// import Food from "./images/food-1.pdf";
 
 const foodMenu = [
   "https://i.postimg.cc/jS1xkHFQ/food-1.png",
@@ -429,9 +431,7 @@ const buttonId1Response = (phone_number_id, from) => {
       to: from,
       type: "document",
       document: {
-          id: "FOOD_MENU",
-          caption: "Food menu",
-          filename: Food
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-1.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
