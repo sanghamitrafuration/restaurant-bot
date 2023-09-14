@@ -701,19 +701,25 @@ const listId2Response = (phone_number_id, from) => {
   const minutes = date.getMinutes();
   let answer = false;
   if (day === 0 || day === 6) {
-    if (hour <= 1 && minutes <= 0) {
+    if (hour < 1) {
       answer = true;
-    } else if (hour >= 12 && minutes >= 30 && hour <= 15 && minutes <= 30) {
+    } else if(hour===12 && minutes>=30 || hour===15 && minutes<=30){
+      answer= true;
+    } else if (hour > 12 && hour < 15) {
       answer = true;
-    } else if (hour >= 19 && minutes >= 30 && hour <= 23 && minutes <= 59) {
+    } else if (hour === 19 && minutes >= 30 || hour === 23 && minutes <= 59) {
+      answer = true;
+    } else if (hour > 19 && hour < 23) {
       answer = true;
     } else {
       answer = false;
     }
   } else {
-    if (hour <= 1 && minutes <= 0) {
+    if (hour < 1) {
       answer = true;
-    } else if (hour >= 19 && minutes >= 30 && hour <= 23 && minutes <= 59) {
+    } else if (hour === 19 && minutes >= 30 || hour === 23 && minutes <= 59) {
+      answer = true;
+    } else if (hour > 19 && hour < 23) {
       answer = true;
     } else {
       answer = false;
