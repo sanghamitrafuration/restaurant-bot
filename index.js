@@ -16,7 +16,7 @@ const axios = require("axios").default;
 const app = express().use(body_parser.json()); // creates express http server
 const PORT = process.env.PORT || 1337;
 
-import Food from "./images/food-1.pdf";
+// import Food from "./images/food-1.pdf";
 
 const foodMenu = [
   "https://i.postimg.cc/jS1xkHFQ/food-1.png",
@@ -431,7 +431,7 @@ const buttonId1Response = (phone_number_id, from) => {
       document: {
           id: "FOOD_MENU",
           caption: "Food menu",
-          filename: Food
+          filename: "https://drive.google.com/file/d/17GAz0kkUuEp_RXhtKLMee0ttIGZLGihz/view?usp=drive_link"
       }
     },
     headers: { "Content-Type": "application/json" },
