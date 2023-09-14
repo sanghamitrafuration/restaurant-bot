@@ -431,9 +431,8 @@ const buttonId1Response = (phone_number_id, from) => {
       to: from,
       type: "document",
       document: {
-          caption: "AKINA",
           filename: "AKINA-FOOD-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-1.pdf"
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -455,31 +454,31 @@ const buttonId2Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        body: "Beverage Menu is Here",
+        body: "Beverages Menu is here",
       },
     },
     headers: { "Content-Type": "application/json" },
   });
-  for (let i = 0; i < Beverages.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: Beverages[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "document",
+      document: {
+          filename: "AKINA-BEVERAGE-MENU.pdf",
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/beverages-menu.pdf"
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 const buttonId3Response = (phone_number_id, from, msg_body) => {
@@ -496,31 +495,30 @@ const buttonId3Response = (phone_number_id, from, msg_body) => {
       type: "text",
       text: {
         // the text object
-        body: "Bar Menu is Here",
+        body: "Bar Menu is here",
       },
     },
     headers: { "Content-Type": "application/json" },
   });
-  for (let i = 0; i < BarMenu.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: BarMenu[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "document",
+      document: {
+          filename: "AKINA-BAR-MENU.pdf",
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/bar-menu.pdf"
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 const buttonId4Response = (phone_number_id, from) => {
