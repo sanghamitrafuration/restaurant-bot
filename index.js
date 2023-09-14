@@ -177,6 +177,11 @@ app.post("/webhook", async (req, res) => {
               .button_reply.id === "UNIQUE_BUTTON_ID_7"
           ) {
             buttonId7Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_8"
+          ) {
+            buttonId8Response(phone_number_id, from);
           } else {
             noresponse(phone_number_id, from);
           }
@@ -601,6 +606,28 @@ const buttonId7Response = (phone_number_id, from) => {
   });
 };
 
+const buttonId8Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        preview_url: true,
+        body: "Click on the link for our instagrame page https://www.instagram.com/akinamumbai/?hl=en",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
 const noresponse = (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -1014,6 +1041,13 @@ const listId9Response = (phone_number_id, from) => {
                 title: "Email",
               },
             },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_8",
+                title: "Instagram",
+              },
+            }
           ],
         },
       },
