@@ -1026,7 +1026,7 @@ const listId9Response = (phone_number_id, from) => {
         type: "button",
         body: {
           // text: "Select the option"
-          text: "Please select the menu type",
+          text: "Contact Us",
         },
         action: {
           buttons: [
