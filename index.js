@@ -955,7 +955,7 @@ const listId7Response = (phone_number_id, from) => {
         latitude: "19.059504187994314",
         name: "AKINA",
         address:
-          "Golden Palace, Turner Rd, opposite Mala Sinha Bunglow, Bandra West, Mumbai, Maharashtra 400050",
+          "Please visit. We are happy to serve you at AKina, Golden Palace, Turner Rd, opposite Mala Sinha Bunglow, Bandra West, Mumbai, Maharashtra 400050",
       },
     },
     headers: { "Content-Type": "application/json" },
