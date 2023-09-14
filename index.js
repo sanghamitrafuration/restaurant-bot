@@ -16,7 +16,7 @@ const axios = require("axios").default;
 const app = express().use(body_parser.json()); // creates express http server
 const PORT = process.env.PORT || 1337;
 
-import Food from "./images/food-1";
+// import Food from "./images/food-1";
 
 const foodMenu = [
   "https://i.postimg.cc/jS1xkHFQ/food-1.png",
@@ -427,11 +427,11 @@ const buttonId1Response = (phone_number_id, from) => {
       messaging_product: "whatsapp",
       recipient_type: "individual",
       to: from,
-      "type": "document",
-      "document": {
-          "id": "FOOD_MENU",
-          "caption": "<Food menu",
-          "filename": Food
+      type: "document",
+      document: {
+          id: "FOOD_MENU",
+          caption: "Food menu",
+          filename: Food
       }
     },
     headers: { "Content-Type": "application/json" },
