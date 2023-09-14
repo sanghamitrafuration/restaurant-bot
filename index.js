@@ -431,10 +431,10 @@ const buttonId1Response = (phone_number_id, from) => {
       to: from,
       type: "document",
       document: {
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-1.pdf",
-          provider: {
-            "name" : "Akina"
-          }
+          id: "FOOD_MENU",
+          caption: "AKINA",
+          filename: "food-1.pdf",
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-1.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
