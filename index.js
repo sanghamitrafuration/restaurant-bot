@@ -687,7 +687,7 @@ const listId1Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        body: " *Monday-Friday* *-* *7:30pm-1am* \n \n *Saturday & Sunday* *-* *12:30pm-3:30pm,* *7:30pm-1am*",
+        body: " *Monday-Friday* *-* *7:30pm-1am* \n \n*Saturday & Sunday* *-* *12:30pm-3:30pm,* *7:30pm-1am*",
       },
     },
     headers: { "Content-Type": "application/json" },
