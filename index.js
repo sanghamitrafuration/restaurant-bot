@@ -695,7 +695,7 @@ const listId1Response = (phone_number_id, from) => {
 };
 
 const listId2Response = (phone_number_id, from) => {
-  const options= { timeZone : 'Asia/Lolkata'};
+  const options= { timeZone : 'Asia/Kolkata'};
   const currentDate= new Date().toLocaleString('en-US', options);
   const date = new Date(currentDate);
   const day = date.getDay();
