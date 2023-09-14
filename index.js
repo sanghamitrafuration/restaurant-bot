@@ -432,7 +432,7 @@ const buttonId1Response = (phone_number_id, from) => {
       type: "document",
       document: {
           caption: "AKINA",
-          filename: "food-1.pdf",
+          filename: "AKINA-FOOD-MENU.pdf",
           link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-1.pdf"
       }
     },
