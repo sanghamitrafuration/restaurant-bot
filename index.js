@@ -186,6 +186,21 @@ app.post("/webhook", async (req, res) => {
               .button_reply.id === "UNIQUE_BUTTON_ID_8"
           ) {
             buttonId8Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_9"
+          ) {
+            buttonId9Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_10"
+          ) {
+            buttonId10Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_11"
+          ) {
+            buttonId11Response(phone_number_id, from);
           } else {
             noresponse(phone_number_id, from);
           }
@@ -311,24 +326,6 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
     data: {
       messaging_product: "whatsapp",
       to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: msg_body,
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
       text: {
         body: "Our Social media",
       },
@@ -337,31 +334,17 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
         type: "button",
         body: {
           // text: "Select the option"
-          text: "Click on the link",
+          text: msg_body,
         },
         action: {
           buttons: [
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_9",
-                title: "Website",
+                id: "UNIQUE_BUTTON_ID_8",
+                title: "Social Media",
               },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_10",
-                title: "Instagram",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_11",
-                title: "Facebook",
-              },
-            },
+            }
           ],
         },
       },
@@ -687,16 +670,114 @@ const buttonId8Response = (phone_number_id, from) => {
     data: {
       messaging_product: "whatsapp",
       to: from,
+      text: {
+        body: "Our Social media",
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: "Click on the link to visit us",
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_9",
+                title: "Website",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_10",
+                title: "Instagram",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_11",
+                title: "Facebook",
+              },
+            },
+          ],
+        },
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+}
+
+const buttonId9Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
       type: "text",
       text: {
         // the text object
         preview_url: true,
-        body: "Click on the link for our instagrame page https://www.instagram.com/akinamumbai/?hl=en",
+        body: "Click on the link to visit our https://www.akinarestaurant.com/",
       },
     },
     headers: { "Content-Type": "application/json" },
   });
 };
+
+
+const buttonId10Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        preview_url: true,
+        body: "Click on the link for our instagram page https://www.instagram.com/akinamumbai/?hl=en",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+const buttonId11Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        preview_url: true,
+        body: "Click on the link for our facebook page https://facebook.com/akinamumbai/",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
 
 const noresponse = (phone_number_id, from) => {
   axios({
@@ -1117,13 +1198,6 @@ const listId9Response = (phone_number_id, from) => {
               reply: {
                 id: "UNIQUE_BUTTON_ID_7",
                 title: "Email",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_8",
-                title: "Instagram",
               },
             }
           ],
