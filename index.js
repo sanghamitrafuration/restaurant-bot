@@ -344,22 +344,22 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_1",
-                title: "Food Menu",
+                id: "UNIQUE_BUTTON_ID_9",
+                title: "Website",
               },
             },
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_2",
-                title: "Beverages",
+                id: "UNIQUE_BUTTON_ID_10",
+                title: "Instagram",
               },
             },
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_3",
-                title: "Bar Menu",
+                id: "UNIQUE_BUTTON_ID_11",
+                title: "Facebook",
               },
             },
           ],
@@ -384,10 +384,10 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
         type: "list",
         header: {
           type: "text",
-          text: "AKINA",
+          text: "About Akina",
         },
         body: {
-          text: msg_body,
+          text: "A Contemporary Japanese Restaurant And Bar in Mumbai",
         },
         footer: {
           text: "Click the button to explore more",
