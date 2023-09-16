@@ -432,7 +432,7 @@ const buttonId1Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "AKINA-FOOD-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-menu.pdf"
+          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/food-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -474,7 +474,7 @@ const buttonId2Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "AKINA-BEVERAGE-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/beverages-menu.pdf"
+          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/beverages-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -514,7 +514,7 @@ const buttonId3Response = (phone_number_id, from, msg_body) => {
       type: "document",
       document: {
           filename: "AKINA-BAR-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/bar-menu.pdf"
+          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/bar-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
