@@ -327,7 +327,7 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
       messaging_product: "whatsapp",
       to: from,
       text: {
-        body: "Our Social media",
+        body: "",
       },
       type: "interactive",
       interactive: {
@@ -482,7 +482,7 @@ const buttonId1Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "AKINA-FOOD-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-menu.pdf"
+          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/food-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
