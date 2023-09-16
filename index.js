@@ -378,9 +378,9 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
         action: {
           button: "About Us",
           sections: [
-            {
-              title: "Timing",
-              rows: [
+            // {
+            //   title: "Timing",
+            //   rows: [
                 {
                   id: "OUR_SERVICE_1_ID",
                   title: "Timings of Restaurant",
@@ -389,11 +389,11 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
                   id: "OUR_SERVICE_2_ID",
                   title: "Is it open now?",
                 },
-              ],
-            },
-            {
-              title: "Photos",
-              rows: [
+            //   ],
+            // },
+            // {
+            //   title: "Photos",
+            //   rows: [
                 {
                   id: "OUR_SERVICE_3_ID",
                   title: "Ambience Photos",
@@ -402,11 +402,11 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
                   id: "OUR_SERVICE_4_ID",
                   title: "Top Dishes",
                 },
-              ],
-            },
-            {
-              title: "Food",
-              rows: [
+            //   ],
+            // },
+            // {
+            //   title: "Food",
+            //   rows: [
                 {
                   id: "OUR_SERVICE_5_ID",
                   title: "Menu",
@@ -415,11 +415,11 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
                   id: "OUR_SERVICE_6_ID",
                   title: "Highlights of Restaurant",
                 },
-              ],
-            },
-            {
-              title: "Find Us",
-              rows: [
+            //   ],
+            // },
+            // {
+            //   title: "Find Us",
+            //   rows: [
                 {
                   id: "OUR_SERVICE_7_ID",
                   title: "Our Location",
@@ -428,11 +428,11 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
                   id: "OUR_SERVICE_8_ID",
                   title: "Order Link",
                 },
-              ],
-            },
-            {
-              title: "Contact",
-              rows: [
+            //   ],
+            // },
+            // {
+            //   title: "Contact",
+            //   rows: [
                 {
                   id: "OUR_SERVICE_9_ID",
                   title: "Contact Us",
