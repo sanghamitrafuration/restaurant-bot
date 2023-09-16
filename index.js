@@ -337,7 +337,7 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
         type: "button",
         body: {
           // text: "Select the option"
-          text: "Please Select Menu type",
+          text: "Click on the link",
         },
         action: {
           buttons: [
