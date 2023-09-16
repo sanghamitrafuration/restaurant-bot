@@ -310,6 +310,73 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
       token,
     data: {
       messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        body: msg_body,
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      text: {
+        body: "Our Social media",
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: "Please Select Menu type",
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_1",
+                title: "Food Menu",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_2",
+                title: "Beverages",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_3",
+                title: "Bar Menu",
+              },
+            },
+          ],
+        },
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
       recipient_type: "individual",
       to: from,
       type: "interactive",
@@ -432,7 +499,7 @@ const buttonId1Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "AKINA-FOOD-MENU.pdf",
-          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/food-menu.pdf"
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/food-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -474,7 +541,7 @@ const buttonId2Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "AKINA-BEVERAGE-MENU.pdf",
-          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/beverages-menu.pdf"
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/beverages-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -514,7 +581,7 @@ const buttonId3Response = (phone_number_id, from, msg_body) => {
       type: "document",
       document: {
           filename: "AKINA-BAR-MENU.pdf",
-          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/bar-menu.pdf"
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/bar-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
