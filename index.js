@@ -327,7 +327,7 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
       messaging_product: "whatsapp",
       to: from,
       text: {
-        body: "",
+        body: msg_body,
       },
       type: "interactive",
       interactive: {
