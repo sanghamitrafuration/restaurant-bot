@@ -351,89 +351,6 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
     },
     headers: { "Content-Type": "application/json" },
   });
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "interactive",
-        interactive: {
-          type: "list",
-          body: {
-            text: `Akina, A Contemporary Japanese Restaurant And Bar in Mumbai`,
-          },
-          action: {
-            button: "About Us",
-            sections: [
-              {
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_1_ID",
-                  title: "Timings of Restaurant"
-                }
-              },{
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_2_ID",
-                  title: "row.title"
-                }
-              },{
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_3_ID",
-                  title: "row.title"
-                }
-              },{
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_4_ID",
-                  title: "row.title",
-                }
-              },{
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_5_ID",
-                  title: "row.title"
-                }
-              },{
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_6_ID",
-                  title: "row.title"
-                }
-              },{
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_7_ID",
-                  title: "row.title"
-                }
-              },{
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_8_ID",
-                  title: "row.title"
-                }
-              },{
-                title: "",
-                rows: {
-                  id: "OUR_SERVICE_9_ID",
-                  title: "row.title"
-                }
-              },
-            ],
-          },
-        },
-      },
-        headers: {
-          Authorization: `Bearer ${botDb.token}`,
-        }
-  });
   // axios({
   //   method: "POST", // Required, HTTP method, a string, e.g. POST, GET
   //   url:
@@ -442,92 +359,175 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
   //     "/messages?access_token=" +
   //     token,
   //   data: {
-  //     messaging_product: "whatsapp",
-  //     recipient_type: "individual",
-  //     to: from,
-  //     type: "interactive",
-  //     interactive: {
-  //       type: "list",
-  //       header: {
-  //         type: "text",
-  //         text: "About Akina",
-  //       },
-  //       body: {
-  //         text: "A Contemporary Japanese Restaurant And Bar in Mumbai",
-  //       },
-  //       footer: {
-  //         text: "Click the button to explore more",
-  //       },
-  //       action: {
-  //         button: "About Us",
-  //         sections: [
-  //           {
-  //             title: "Timing",
-  //             rows: [
-  //               {
+  //       messaging_product: "whatsapp",
+  //       recipient_type: "individual",
+  //       to: from,
+  //       type: "interactive",
+  //       interactive: {
+  //         type: "list",
+  //         body: {
+  //           text: `Akina, A Contemporary Japanese Restaurant And Bar in Mumbai`,
+  //         },
+  //         action: {
+  //           button: "About Us",
+  //           sections: [
+  //             {
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_1_ID",
-  //                 title: "Timings of Restaurant",
-  //               },
-  //               {
+  //                 title: "Timings of Restaurant"
+  //               }
+  //             },{
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_2_ID",
-  //                 title: "Is it open now?",
-  //               },
-  //             ],
-  //           },
-  //           {
-  //             title: "Photos",
-  //             rows: [
-  //               {
+  //                 title: "row.title"
+  //               }
+  //             },{
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_3_ID",
-  //                 title: "Ambience Photos",
-  //               },
-  //               {
+  //                 title: "row.title"
+  //               }
+  //             },{
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_4_ID",
-  //                 title: "Top Dishes",
-  //               },
-  //             ],
-  //           },
-  //           {
-  //             title: "Food",
-  //             rows: [
-  //               {
+  //                 title: "row.title",
+  //               }
+  //             },{
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_5_ID",
-  //                 title: "Menu",
-  //               },
-  //               {
+  //                 title: "row.title"
+  //               }
+  //             },{
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_6_ID",
-  //                 title: "Highlights of Restaurant",
-  //               },
-  //             ],
-  //           },
-  //           {
-  //             title: "Find Us",
-  //             rows: [
-  //               {
+  //                 title: "row.title"
+  //               }
+  //             },{
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_7_ID",
-  //                 title: "Our Location",
-  //               },
-  //               {
+  //                 title: "row.title"
+  //               }
+  //             },{
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_8_ID",
-  //                 title: "Order Link",
-  //               },
-  //             ],
-  //           },
-  //           {
-  //             title: "Contact",
-  //             rows: [
-  //               {
+  //                 title: "row.title"
+  //               }
+  //             },{
+  //               title: "",
+  //               rows: {
   //                 id: "OUR_SERVICE_9_ID",
-  //                 title: "Contact Us",
-  //               },
-  //             ],
-  //           },
-  //         ],
+  //                 title: "row.title"
+  //               }
+  //             },
+  //           ],
+  //         },
   //       },
   //     },
-  //   },
-  //   headers: { "Content-Type": "application/json" },
+  //       headers: {
+  //         Authorization: `Bearer ${botDb.token}`,
+  //       }
   // });
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "interactive",
+      interactive: {
+        type: "list",
+        header: {
+          type: "text",
+          text: "About Akina",
+        },
+        body: {
+          text: "A Contemporary Japanese Restaurant And Bar in Mumbai",
+        },
+        footer: {
+          text: "Click the button to explore more",
+        },
+        action: {
+          button: "About Us",
+          sections: [
+            {
+              title: "Timing",
+              rows: [
+                {
+                  id: "OUR_SERVICE_1_ID",
+                  title: "Timings of Restaurant",
+                },
+                {
+                  id: "OUR_SERVICE_2_ID",
+                  title: "Is it open now?",
+                },
+              ],
+            },
+            {
+              title: "Photos",
+              rows: [
+                {
+                  id: "OUR_SERVICE_3_ID",
+                  title: "Ambience Photos",
+                },
+                {
+                  id: "OUR_SERVICE_4_ID",
+                  title: "Top Dishes",
+                },
+              ],
+            },
+            {
+              title: "Food",
+              rows: [
+                {
+                  id: "OUR_SERVICE_5_ID",
+                  title: "Menu",
+                },
+                {
+                  id: "OUR_SERVICE_6_ID",
+                  title: "Highlights of Restaurant",
+                },
+              ],
+            },
+            {
+              title: "Find Us",
+              rows: [
+                {
+                  id: "OUR_SERVICE_7_ID",
+                  title: "Our Location",
+                },
+                {
+                  id: "OUR_SERVICE_8_ID",
+                  title: "Order Link",
+                },
+              ],
+            },
+            {
+              title: "Contact",
+              rows: [
+                {
+                  id: "OUR_SERVICE_9_ID",
+                  title: "Contact Us",
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
 const buttonId1Response = (phone_number_id, from) => {
