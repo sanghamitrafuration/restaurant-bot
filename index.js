@@ -362,14 +362,14 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
       messaging_product: "whatsapp",
       to: from,
       text: {
-        body: "Which outlet are you looking for?",
+        body: "",
       },
       type: "interactive",
       interactive: {
         type: "button",
         body: {
           // text: "Select the option"
-          text: msg_body,
+          text: "Which outlet are you looking for?",
         },
         action: {
           buttons: [
