@@ -201,6 +201,36 @@ app.post("/webhook", async (req, res) => {
               .button_reply.id === "UNIQUE_BUTTON_ID_12"
           ) {
             buttonId12Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_13"
+          ) {
+            buttonId13Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_14"
+          ) {
+            buttonId14Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_15"
+          ) {
+            buttonId15Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_16"
+          ) {
+            buttonId16Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_17"
+          ) {
+            buttonId17Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive
+              .button_reply.id === "UNIQUE_BUTTON_ID_18"
+          ) {
+            buttonId18Response(phone_number_id, from);
           } else {
             noresponse(phone_number_id, from);
           }
@@ -270,6 +300,51 @@ app.post("/webhook", async (req, res) => {
               .id === "OUR_SERVICE_9_ID"
           ) {
             listId9Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_10_ID"
+          ) {
+            listId10Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_11_ID"
+          ) {
+            listId11Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_12_ID"
+          ) {
+            listId12Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_13_ID"
+          ) {
+            listId13Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_14_ID"
+          ) {
+            listId14Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_15_ID"
+          ) {
+            listId15Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_16_ID"
+          ) {
+            listId16Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_17_ID"
+          ) {
+            listId17Response(phone_number_id, from);
+          } else if (
+            reqData.entry[0].changes[0].value.messages[0].interactive.list_reply
+              .id === "OUR_SERVICE_18_ID"
+          ) {
+            listId18Response(phone_number_id, from);
           } else {
             noresponse(phone_number_id, from);
           }
