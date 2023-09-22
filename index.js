@@ -21,32 +21,38 @@ const PORT = process.env.PORT || 1337;
 // import Food from "./images/food-1.pdf";
 
 const DadarAmbience = [
-  "https://i.postimg.cc/y889jJYb/ambience-1.jpg",
-  "https://i.postimg.cc/q7tKf9Kc/ambience-2.jpg",
-  "https://i.postimg.cc/1zLqyJ0k/ambience-3.jpg",
+  "https://i.postimg.cc/Z5rTH3JD/2022-10-22.jpg",
+  "https://i.postimg.cc/BZLtDjPR/2022-04-25.jpg",
+  "https://i.postimg.cc/MpxGht38/2023-04-25.jpg",
+  "https://i.postimg.cc/W3QNS7qC/2023-01-14.jpg",
+  "https://i.postimg.cc/449Nyjrg/2023-02-24.jpg",
+  "https://i.postimg.cc/gJ6dw6tD/2023-04-25-1.jpg"
 ];
 const JuhuAmbience = [
-  "https://i.postimg.cc/y889jJYb/ambience-1.jpg",
-  "https://i.postimg.cc/q7tKf9Kc/ambience-2.jpg",
-  "https://i.postimg.cc/1zLqyJ0k/ambience-3.jpg",
+  "https://i.postimg.cc/BnKWs1bc/2022-11-18.jpg",
+  "https://i.postimg.cc/Qdk2HZgH/2023-06-15.jpg",
+  "https://i.postimg.cc/VNf3tZ44/2023-06-15-1.jpg",
+  "https://i.postimg.cc/HkQSB0jK/IMG20230101195508.jpg",
+  "https://i.postimg.cc/br7TRdPp/IMG-20221031-205749.jpg",
+  "https://i.postimg.cc/XNr6xhWz/IMG-20221031-210049.jpg"
+
 ];
 const DadarTopDishes = [
-  "https://i.postimg.cc/d15wrGry/dish-1.png",
-  "https://i.postimg.cc/fWgMbjw4/dish-2.png",
-  "https://i.postimg.cc/N04cvRNz/dish-3.png",
-  "https://i.postimg.cc/D0WkGH79/dish-4.png",
-  "https://i.postimg.cc/sgzfFfj1/dish-5.png",
-  "https://i.postimg.cc/Fs5NcFJG/dish-6.png",
-  "https://i.postimg.cc/Znktrj00/dish-7.png",
+  "https://i.postimg.cc/vZHsrKSD/2023-09-02.jpg",
+  "https://i.postimg.cc/ZqWzgdmS/2022-02-22.jpg",
+  "https://i.postimg.cc/Ss4V9BDv/PXL-20220525-154337712-PORTRAIT.jpg",
+  "https://i.postimg.cc/gjnhL4F7/2020-12-29.jpg",
+  "https://i.postimg.cc/0jFwYm9y/2022-06-24.jpg",
+  "https://i.postimg.cc/fTSXwHvt/IMG-20180124-194446.jpg",
+  "https://i.postimg.cc/bYBkfX1f/IMG-20181114-192911.jpg",
 ];
 const JuhuTopDishes = [
-  "https://i.postimg.cc/d15wrGry/dish-1.png",
-  "https://i.postimg.cc/fWgMbjw4/dish-2.png",
-  "https://i.postimg.cc/N04cvRNz/dish-3.png",
-  "https://i.postimg.cc/D0WkGH79/dish-4.png",
-  "https://i.postimg.cc/sgzfFfj1/dish-5.png",
-  "https://i.postimg.cc/Fs5NcFJG/dish-6.png",
-  "https://i.postimg.cc/Znktrj00/dish-7.png",
+  "https://i.postimg.cc/DfrHCKD5/2022-11-15.jpg",
+  "https://i.postimg.cc/1Xrd4p6b/20221102-211159.jpg",
+  "https://i.postimg.cc/d1dpcM0s/2023-03-05.jpg",
+  "https://i.postimg.cc/kX7ZzpPC/2023-06-15.jpg",
+  "https://i.postimg.cc/4NwMgQX9/IMG20230101203900.jpg"
+
 ];
 
 // Sets server port and logs message on success
