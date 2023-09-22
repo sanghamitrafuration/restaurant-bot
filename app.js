@@ -20,26 +20,12 @@ const PORT = process.env.PORT || 1337;
 
 // import Food from "./images/food-1.pdf";
 
-const DadarAmbience = [
+const Ambience = [
   "https://i.postimg.cc/y889jJYb/ambience-1.jpg",
   "https://i.postimg.cc/q7tKf9Kc/ambience-2.jpg",
   "https://i.postimg.cc/1zLqyJ0k/ambience-3.jpg",
 ];
-const JuhuAmbience = [
-  "https://i.postimg.cc/y889jJYb/ambience-1.jpg",
-  "https://i.postimg.cc/q7tKf9Kc/ambience-2.jpg",
-  "https://i.postimg.cc/1zLqyJ0k/ambience-3.jpg",
-];
-const DadarTopDishes = [
-  "https://i.postimg.cc/d15wrGry/dish-1.png",
-  "https://i.postimg.cc/fWgMbjw4/dish-2.png",
-  "https://i.postimg.cc/N04cvRNz/dish-3.png",
-  "https://i.postimg.cc/D0WkGH79/dish-4.png",
-  "https://i.postimg.cc/sgzfFfj1/dish-5.png",
-  "https://i.postimg.cc/Fs5NcFJG/dish-6.png",
-  "https://i.postimg.cc/Znktrj00/dish-7.png",
-];
-const JuhuTopDishes = [
+const TopDishes = [
   "https://i.postimg.cc/d15wrGry/dish-1.png",
   "https://i.postimg.cc/fWgMbjw4/dish-2.png",
   "https://i.postimg.cc/N04cvRNz/dish-3.png",
@@ -190,11 +176,6 @@ app.post("/webhook", async (req, res) => {
               .button_reply.id === "UNIQUE_BUTTON_ID_11"
           ) {
             buttonId11Response(phone_number_id, from);
-          } else if (
-            reqData.entry[0].changes[0].value.messages[0].interactive
-              .button_reply.id === "UNIQUE_BUTTON_ID_12"
-          ) {
-            buttonId12Response(phone_number_id, from);
           } else {
             noresponse(phone_number_id, from);
           }
@@ -335,7 +316,7 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
             {
               type: "reply",
               reply: {
-                id: "UNIQUE_BUTTON_ID_1",
+                id: "UNIQUE_BUTTON_ID_8",
                 title: "Social Media",
               },
             }
@@ -354,946 +335,6 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
       token,
     data: {
       messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: "Which outlet are you looking for?",
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: msg_body,
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_5",
-                title: "Dadar",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_6",
-                title: "Juhu",
-              },
-            }
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-const noresponse = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: "We will contact you",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const okresponse = (phone_number_id, from, msg_body) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: msg_body,
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const listId1Response= (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: " *Monday-Sunday* *-* *11am-12am*",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-
-const listId2Response= (phone_number_id, from) => {
-  const options= { timeZone : 'Asia/Kolkata'};
-  const currentDate= new Date().toLocaleString('en-US', options);
-  const date = new Date(currentDate);
-  const hour = date.getHours();
-  let answer = false;
-  if(hour>=11 && hour<=23){
-    answer = true;
-  }else {
-    answer = false;
-  }
-  const reply =
-    answer === true
-      ? "Yes, We are open now"
-      : "We are sorry to say that we are closed now";
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: reply,
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-const listId3Response= (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: "Here are Photos of the Ambience",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-  for (let i = 0; i < DadarAmbience.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: DadarAmbience[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-}
-
-const listId4Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: "Photos of Top Dishes",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-  for (let i = 0; i < DadarTopDishes.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: DadarTopDishes[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-};
-
-const listId5Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: "Menu",
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: "Please Select Menu type",
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_7",
-                title: "Food Menu",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_8",
-                title: "Beverages",
-              },
-            },
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-
-const listId6Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: "Experience the legacy of Pritam, spanning over 80 years, rooted in a tale of humble beginnings as a small eatery outside Dadar station, and our journey to becoming a beloved culinary destination in Mumbai and eventually becoming one of the most reputed family-owned hospitality houses in the country.",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-  for (let i = 0; i < DadarAmbience.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: DadarAmbience[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-  for (let i = 0; i < DadarTopDishes.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: DadarTopDishes[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-};
-
-const listId7Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "location",
-      location: {
-        longitude: "72.84640404556183",
-        latitude: "19.01673821527208",
-        name: "Pritam Da Dhaba, Dadar",
-        address:
-          "Pritam Da Dhaba, 1, Swami Ganjivandas Marg, Dadar East, Dadar, Mumbai, Maharashtra 400014",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const listId8Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: "Order Link",
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: "Order Link",
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_9",
-                title: "Zomato",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_10",
-                title: "Swiggy",
-              },
-            },
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const listId9Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: "Menu",
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: "Contact Us",
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_11",
-                title: "Phone",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_12",
-                title: "Email",
-              },
-            }
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-
-
-
-const listId10Response= (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: " *Monday-Sunday* *-* *12pm-3:30pm* *&* *7pm-12:30am*",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-
-const listId11Response= (phone_number_id, from) => {
-  const options= { timeZone : 'Asia/Kolkata'};
-  const currentDate= new Date().toLocaleString('en-US', options);
-  const date = new Date(currentDate);
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  let answer = false;
-  if(hour>=12 && hour<15 || hour>=19 && hour<=23){
-    answer = true;
-  }else if(hour===15 && minute<=30){
-    answer = true;
-  }else if(hour===0 && minute<=30){
-    answer = true;
-  }else {
-    answer = false;
-  }
-  const reply =
-    answer === true
-      ? "Yes, We are open now"
-      : "We are sorry to say that we are closed now";
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: reply,
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-const listId12Response= (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: "Here are Photos of the Ambience",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-  for (let i = 0; i < JuhuAmbience.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: JuhuAmbience[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-}
-
-const listId13Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: "Photos of Top Dishes",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-  for (let i = 0; i < JuhuTopDishes.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: JuhuTopDishes[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-};
-
-const listId14Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: "Menu",
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: "Please Select Menu type",
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_13",
-                title: "Food Menu",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_14",
-                title: "Beverages",
-              },
-            },
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-
-const listId15Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        body: "Experience the legacy of Pritam, spanning over 80 years, rooted in a tale of humble beginnings as a small eatery outside Dadar station, and our journey to becoming a beloved culinary destination in Mumbai and eventually becoming one of the most reputed family-owned hospitality houses in the country.",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-  for (let i = 0; i < JuhuAmbience.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: JuhuAmbience[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-  for (let i = 0; i < JuhuTopDishes.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: JuhuTopDishes[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-};
-
-const listId16Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "location",
-      location: {
-        longitude: "72.82788874140604",
-        latitude: "19.09137870773975",
-        name: "Pritam Da Dhaba, Juhu",
-        address:
-          "Pritam Da Dhaba, 1st Floor, Bloom Hotel, Juhu Tara Rd, Shivaji Nagr, Juhu, Mumbai, Maharashtra 400049",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const listId17Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: "Order Link",
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: "Order Link",
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_15",
-                title: "Zomato",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_16",
-                title: "Swiggy",
-              },
-            },
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const listId18Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: "Menu",
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: "Contact Us",
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_17",
-                title: "Phone",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_18",
-                title: "Email",
-              },
-            }
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-
-
-
-
-
-
-
-const buttonId1Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      text: {
-        body: "Our Social media",
-      },
-      type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          // text: "Select the option"
-          text: "Click on the link to visit us",
-        },
-        action: {
-          buttons: [
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_2",
-                title: "Website",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_3",
-                title: "Instagram",
-              },
-            },
-            {
-              type: "reply",
-              reply: {
-                id: "UNIQUE_BUTTON_ID_4",
-                title: "Facebook",
-              },
-            },
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-const buttonId2Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        preview_url: true,
-        body: "Click on the link to visit our https://www.pritamhotels.in/",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const buttonId3Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        preview_url: true,
-        body: "Click on the link for our instagram page https://www.instagram.com/pritamrestaurant/?hl=en",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const buttonId4Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        preview_url: true,
-        body: "Click on the link for our facebook page https://m.facebook.com/people/Pritam-Da-Dhaba/100079235420457/",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const buttonId5Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
       recipient_type: "individual",
       to: from,
       type: "interactive",
@@ -1301,7 +342,7 @@ const buttonId5Response = (phone_number_id, from) => {
         type: "list",
         header: {
           type: "text",
-          text: "Pritam Da Dhaba, dadar",
+          text: "Pritam Da Dhaba",
         },
         body: {
           text: "FROM HUMBLE BEGINNINGS IN 1942, WE'VE BECOME MUMBAI'S BELOVED CULINARY DESTINATION",
@@ -1381,104 +422,7 @@ const buttonId5Response = (phone_number_id, from) => {
   });
 }
 
-const buttonId6Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      recipient_type: "individual",
-      to: from,
-      type: "interactive",
-      interactive: {
-        type: "list",
-        header: {
-          type: "text",
-          text: "Pritam Da Dhaba, Juhu",
-        },
-        body: {
-          text: "FROM HUMBLE BEGINNINGS IN 1942, WE'VE BECOME MUMBAI'S BELOVED CULINARY DESTINATION",
-        },
-        footer: {
-          text: "Click the button to explore more",
-        },
-        action: {
-          button: "About Us",
-          sections: [
-            {
-              title: "Timing",
-              rows: [
-                {
-                  id: "OUR_SERVICE_10_ID",
-                  title: "Timings of Restaurant",
-                },
-                {
-                  id: "OUR_SERVICE_11_ID",
-                  title: "Is it open now?",
-                },
-              ],
-            },
-            {
-              title: "Photos",
-              rows: [
-                {
-                  id: "OUR_SERVICE_12_ID",
-                  title: "Ambience Photos",
-                },
-                {
-                  id: "OUR_SERVICE_13_ID",
-                  title: "Top Dishes",
-                },
-              ],
-            },
-            {
-              title: "Food",
-              rows: [
-                {
-                  id: "OUR_SERVICE_14_ID",
-                  title: "Menu",
-                },
-                {
-                  id: "OUR_SERVICE_15_ID",
-                  title: "Highlights of Restaurant",
-                },
-              ],
-            },
-            {
-              title: "Find Us",
-              rows: [
-                {
-                  id: "OUR_SERVICE_16_ID",
-                  title: "Our Location",
-                },
-                {
-                  id: "OUR_SERVICE_17_ID",
-                  title: "Order Link",
-                },
-              ],
-            },
-            {
-              title: "Contact",
-              rows: [
-                {
-                  id: "OUR_SERVICE_18_ID",
-                  title: "Contact Us",
-                },
-              ],
-            },
-          ],
-        },
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-const buttonId7Response = (phone_number_id, from) => {
+const buttonId1Response = (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -1497,6 +441,7 @@ const buttonId7Response = (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   });
+  // for(let i=0;i<foodMenu.length;i++){
 
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -1512,14 +457,15 @@ const buttonId7Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "Pritam-Da-Dhaba-FOOD-MENU.pdf",
-          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/food-menu-dadar.pdf"
+          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/food-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
   });
+  // }
 };
 
-const buttonId8Response = (phone_number_id, from) => {
+const buttonId2Response = (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -1553,12 +499,153 @@ const buttonId8Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "Pritam-Da-Dhaba-BEVERAGE-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/beverages-menu-dadar.pdf"
+          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/beverages-menu.pdf"
       }
     },
     headers: { "Content-Type": "application/json" },
   });
 };
+
+
+const buttonId4Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        preview_url: true,
+        body: "Pleas click on https://www.zomato.com/mumbai/akina-contemporary-japanese-restaurant-and-bar-linking-road-bandra-west to visit our Restaurant on Zomato",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+const buttonId5Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        preview_url: true,
+        body: "Pleas click on https://www.swiggy.com/ to visit us on Swiggy.",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+const buttonId6Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        preview_url: true,
+        body: "Please call on +91-8976452911",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+const buttonId7Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        preview_url: true,
+        body: "Please mail us at hello@furation.tech",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+const buttonId8Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      text: {
+        body: "Our Social media",
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: "Click on the link to visit us",
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_9",
+                title: "Website",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_10",
+                title: "Instagram",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_11",
+                title: "Facebook",
+              },
+            },
+          ],
+        },
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+}
 
 const buttonId9Response = (phone_number_id, from) => {
   axios({
@@ -1575,12 +662,13 @@ const buttonId9Response = (phone_number_id, from) => {
       text: {
         // the text object
         preview_url: true,
-        body: "Pleas click on https://www.zomato.com/mumbai/pritam-da-dhaba-dadar-east/order to visit our Restaurant on Zomato",
+        body: "Click on the link to visit our https://www.akinarestaurant.com/",
       },
     },
     headers: { "Content-Type": "application/json" },
   });
 };
+
 
 const buttonId10Response = (phone_number_id, from) => {
   axios({
@@ -1597,7 +685,7 @@ const buttonId10Response = (phone_number_id, from) => {
       text: {
         // the text object
         preview_url: true,
-        body: "Pleas click on https://www.swiggy.com/restaurants/pritam-da-dhaba-lower-parel-area-matunga-wadala-mumbai-181884 to visit us on Swiggy.",
+        body: "Click on the link for our instagram page https://www.instagram.com/akinamumbai/?hl=en",
       },
     },
     headers: { "Content-Type": "application/json" },
@@ -1619,14 +707,15 @@ const buttonId11Response = (phone_number_id, from) => {
       text: {
         // the text object
         preview_url: true,
-        body: "Please call on 02224143311",
+        body: "Click on the link for our facebook page https://facebook.com/akinamumbai/",
       },
     },
     headers: { "Content-Type": "application/json" },
   });
 };
 
-const buttonId12Response = (phone_number_id, from) => {
+
+const noresponse = (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -1640,17 +729,14 @@ const buttonId12Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        preview_url: true,
-        body: "Please mail us at pritamrestaurant@gmail.com",
+        body: "We will contact you",
       },
     },
     headers: { "Content-Type": "application/json" },
   });
 };
 
-
-
-const buttonId13Response = (phone_number_id, from) => {
+const okresponse = (phone_number_id, from, msg_body) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -1664,34 +750,14 @@ const buttonId13Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        body: "Food Menu is here",
+        body: msg_body,
       },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      recipient_type: "individual",
-      to: from,
-      type: "document",
-      document: {
-          filename: "Pritam-Da-Dhaba-FOOD-MENU.pdf",
-          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/food-menu-juhu.pdf"
-      }
     },
     headers: { "Content-Type": "application/json" },
   });
 };
 
-const buttonId14Response = (phone_number_id, from) => {
+const listId1Response = (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -1705,56 +771,28 @@ const buttonId14Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        body: "Beverages Menu is here",
-      },
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      recipient_type: "individual",
-      to: from,
-      type: "document",
-      document: {
-          filename: "Pritam-Da-Dhaba-BEVERAGE-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/beverages-menu-juhu.pdf"
-      }
-    },
-    headers: { "Content-Type": "application/json" },
-  });
-};
-
-const buttonId15Response = (phone_number_id, from) => {
-  axios({
-    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-    url:
-      "https://graph.facebook.com/v12.0/" +
-      phone_number_id +
-      "/messages?access_token=" +
-      token,
-    data: {
-      messaging_product: "whatsapp",
-      to: from,
-      type: "text",
-      text: {
-        // the text object
-        preview_url: true,
-        body: "Pleas click on https://www.zomato.com/mumbai/pritam-da-dhaba-juhu/order to visit our Restaurant on Zomato",
+        body: " *Monday-Sunday* *-* *11am-12am*",
       },
     },
     headers: { "Content-Type": "application/json" },
   });
 };
 
-const buttonId16Response = (phone_number_id, from) => {
+const listId2Response = (phone_number_id, from) => {
+  const options= { timeZone : 'Asia/Kolkata'};
+  const currentDate= new Date().toLocaleString('en-US', options);
+  const date = new Date(currentDate);
+  const hour = date.getHours();
+  let answer = false;
+  if(hour>=11 && hour<=23){
+    answer = true;
+  }else {
+    answer = false;
+  }
+  const reply =
+    answer === true
+      ? "Yes, We are open now"
+      : "We are sorry to say that we are closed now";
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -1768,15 +806,14 @@ const buttonId16Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        preview_url: true,
-        body: "Pleas click on https://www.swiggy.com/restaurants/pritam-da-dhaba-tara-road-juhu-mumbai-633112 to visit us on Swiggy.",
+        body: reply,
       },
     },
     headers: { "Content-Type": "application/json" },
   });
 };
 
-const buttonId17Response = (phone_number_id, from) => {
+const listId3Response = (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -1790,15 +827,34 @@ const buttonId17Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        preview_url: true,
-        body: "Please call on 02224143311",
+        body: "Here are Photos of the Ambience",
       },
     },
     headers: { "Content-Type": "application/json" },
   });
+  for (let i = 0; i < Ambience.length; i++) {
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: from,
+        type: "image",
+        image: {
+          link: Ambience[i],
+        },
+      },
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 };
 
-const buttonId18Response = (phone_number_id, from) => {
+const listId4Response = (phone_number_id, from) => {
   axios({
     method: "POST", // Required, HTTP method, a string, e.g. POST, GET
     url:
@@ -1812,20 +868,252 @@ const buttonId18Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        preview_url: true,
-        body: "Please mail us at pritamrestaurant@gmail.com",
+        body: "Photos of Top Dishes",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+  for (let i = 0; i < TopDishes.length; i++) {
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: from,
+        type: "image",
+        image: {
+          link: TopDishes[i],
+        },
+      },
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+};
+
+const listId5Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      text: {
+        body: "Menu",
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: "Please Select Menu type",
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_1",
+                title: "Food Menu",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_2",
+                title: "Beverages",
+              },
+            },
+          ],
+        },
       },
     },
     headers: { "Content-Type": "application/json" },
   });
 };
 
+const listId6Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "text",
+      text: {
+        // the text object
+        body: "Experience the legacy of Pritam, spanning over 80 years, rooted in a tale of humble beginnings as a small eatery outside Dadar station, and our journey to becoming a beloved culinary destination in Mumbai and eventually becoming one of the most reputed family-owned hospitality houses in the country.",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+  for (let i = 0; i < Ambience.length; i++) {
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: from,
+        type: "image",
+        image: {
+          link: Ambience[i],
+        },
+      },
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+  for (let i = 0; i < TopDishes.length; i++) {
+    axios({
+      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+      url:
+        "https://graph.facebook.com/v12.0/" +
+        phone_number_id +
+        "/messages?access_token=" +
+        token,
+      data: {
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: from,
+        type: "image",
+        image: {
+          link: TopDishes[i],
+        },
+      },
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+};
 
+const listId7Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      type: "location",
+      location: {
+        longitude: "72.84640404556183",
+        latitude: "19.01673821527208",
+        name: "Pritam Da Dhaba",
+        address:
+          "Pritam Da Dhaba, 1, Swami Ganjivandas Marg, Dadar East, Dadar, Mumbai, Maharashtra 400014",
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
 
+const listId8Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      text: {
+        body: "Order Link",
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: "Order Link",
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_4",
+                title: "Zomato",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_5",
+                title: "Swiggy",
+              },
+            },
+          ],
+        },
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
 
-
-
-
+const listId9Response = (phone_number_id, from) => {
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      to: from,
+      text: {
+        body: "Menu",
+      },
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          // text: "Select the option"
+          text: "Contact Us",
+        },
+        action: {
+          buttons: [
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_6",
+                title: "Phone",
+              },
+            },
+            {
+              type: "reply",
+              reply: {
+                id: "UNIQUE_BUTTON_ID_7",
+                title: "Email",
+              },
+            }
+          ],
+        },
+      },
+    },
+    headers: { "Content-Type": "application/json" },
+  });
+};
 
 app.post("/sendmessage", (req, res) => {
   try {
