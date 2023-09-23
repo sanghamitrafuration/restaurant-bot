@@ -438,7 +438,7 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
       messaging_product: "whatsapp",
       to: from,
       text: {
-        body: "",
+        body: "Our outlets",
       },
       type: "interactive",
       interactive: {
@@ -462,13 +462,55 @@ const welcomeMessageMenu = (phone_number_id, msg_body, from) => {
                 id: "UNIQUE_BUTTON_ID_6",
                 title: "Juhu",
               },
-            }
+            },
           ],
         },
       },
     },
     headers: { "Content-Type": "application/json" },
   });
+  // axios({
+  //   method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+  //   url:
+  //     "https://graph.facebook.com/v12.0/" +
+  //     phone_number_id +
+  //     "/messages?access_token=" +
+  //     token,
+  //   data: {
+  //     messaging_product: "whatsapp",
+  //     to: from,
+  //     text: {
+  //       body: "",
+  //     },
+  //     type: "interactive",
+  //     interactive: {
+  //       type: "button",
+  //       body: {
+  //         // text: "Select the option"
+  //         text: "Which outlet are you looking for?",
+  //       },
+  //       action: {
+  //         buttons: [
+  //           {
+  //             type: "reply",
+  //             reply: {
+  //               id: "UNIQUE_BUTTON_ID_5",
+  //               title: "Dadar",
+  //             },
+  //           },
+  //           {
+  //             type: "reply",
+  //             reply: {
+  //               id: "UNIQUE_BUTTON_ID_6",
+  //               title: "Juhu",
+  //             },
+  //           }
+  //         ],
+  //       },
+  //     },
+  //   },
+  //   headers: { "Content-Type": "application/json" },
+  // });
 }
 
 const noresponse = (phone_number_id, from) => {
