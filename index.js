@@ -752,7 +752,7 @@ const listId6Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        body: "Experience the legacy of Pritam, spanning over 80 years, rooted in a tale of humble beginnings as a small eatery outside Dadar station, and our journey to becoming a beloved culinary destination in Mumbai and eventually becoming one of the most reputed family-owned hospitality houses in the country.",
+        body: "Experience the legacy of *Pritam*, spanning over 80 years, rooted in a tale of humble beginnings as a small eatery outside Dadar station, and our journey to becoming a beloved culinary destination in Mumbai and eventually becoming one of the most reputed family-owned hospitality houses in the country.",
       },
     },
     headers: { "Content-Type": "application/json" },
@@ -795,7 +795,7 @@ const listId7Response = (phone_number_id, from) => {
         latitude: "19.01673821527208",
         name: "Pritam Da Dhaba, Dadar",
         address:
-          "Pritam Da Dhaba, 1, Swami Ganjivandas Marg, Dadar East, Dadar, Mumbai, Maharashtra 400014",
+          "*Pritam* *Da* *Dhaba*, 1, Swami Ganjivandas Marg, Dadar East, Dadar, Mumbai, Maharashtra 400014",
       },
     },
     headers: { "Content-Type": "application/json" },
@@ -1097,7 +1097,7 @@ const listId15Response = (phone_number_id, from) => {
       type: "text",
       text: {
         // the text object
-        body: "Experience the legacy of Pritam, spanning over 80 years, rooted in a tale of humble beginnings as a small eatery outside Dadar station, and our journey to becoming a beloved culinary destination in Mumbai and eventually becoming one of the most reputed family-owned hospitality houses in the country.",
+        body: "Experience the legacy of *Pritam*, spanning over 80 years, rooted in a tale of humble beginnings as a small eatery outside Dadar station, and our journey to becoming a beloved culinary destination in Mumbai and eventually becoming one of the most reputed family-owned hospitality houses in the country.",
       },
     },
     headers: { "Content-Type": "application/json" },
@@ -1140,7 +1140,7 @@ const listId16Response = (phone_number_id, from) => {
         latitude: "19.09137870773975",
         name: "Pritam Da Dhaba, Juhu",
         address:
-          "Pritam Da Dhaba, 1st Floor, Bloom Hotel, Juhu Tara Rd, Shivaji Nagr, Juhu, Mumbai, Maharashtra 400049",
+          "*ritam* *Da* *Dhaba*, 1st Floor, Bloom Hotel, Juhu Tara Rd, Shivaji Nagr, Juhu, Mumbai, Maharashtra 400049",
       },
     },
     headers: { "Content-Type": "application/json" },
