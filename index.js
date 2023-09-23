@@ -631,26 +631,25 @@ const listId3Response= (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   });
-  for (let i = 0; i < DadarAmbience.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: DadarAmbience[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "document",
+      document: {
+          filename: "Pritam-Da-Dhaba-AMBIENCE-PHOTOS.pdf",
+          link: `${HOST_URL}/static/images/dadar-ambience.pdf`
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
 const listId4Response = (phone_number_id, from) => {
@@ -672,26 +671,25 @@ const listId4Response = (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   });
-  for (let i = 0; i < DadarTopDishes.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: DadarTopDishes[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "document",
+      document: {
+          filename: "Pritam-Da-Dhaba-TOP-DISHES.pdf",
+          link: `${HOST_URL}/static/images/dadar-topdishes.pdf`
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 const listId5Response = (phone_number_id, from) => {
@@ -759,46 +757,25 @@ const listId6Response = (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   });
-  for (let i = 0; i < DadarAmbience.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: DadarAmbience[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-  for (let i = 0; i < DadarTopDishes.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: DadarTopDishes[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "document",
+      document: {
+          filename: "Pritam-Da-Dhaba-HIGHLIGHTS.pdf",
+          link: `${HOST_URL}/static/images/dadar-highlights.pdf`
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 const listId7Response = (phone_number_id, from) => {
@@ -999,26 +976,25 @@ const listId12Response= (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   });
-  for (let i = 0; i < JuhuAmbience.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: JuhuAmbience[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "document",
+      document: {
+          filename: "Pritam-Da-Dhaba-AMBIENCE-PHOTOS.pdf",
+          link: `${HOST_URL}/static/images/juhu-ambience.pdf`
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
 const listId13Response = (phone_number_id, from) => {
@@ -1040,26 +1016,25 @@ const listId13Response = (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   });
-  for (let i = 0; i < JuhuTopDishes.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: JuhuTopDishes[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "document",
+      document: {
+          filename: "Pritam-Da-Dhaba-TOP-DISHES.pdf",
+          link: `${HOST_URL}/static/images/juhu-topdishes.pdf`
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 const listId14Response = (phone_number_id, from) => {
@@ -1127,46 +1102,25 @@ const listId15Response = (phone_number_id, from) => {
     },
     headers: { "Content-Type": "application/json" },
   });
-  for (let i = 0; i < JuhuAmbience.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: JuhuAmbience[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-  for (let i = 0; i < JuhuTopDishes.length; i++) {
-    axios({
-      method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-      url:
-        "https://graph.facebook.com/v12.0/" +
-        phone_number_id +
-        "/messages?access_token=" +
-        token,
-      data: {
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: from,
-        type: "image",
-        image: {
-          link: JuhuTopDishes[i],
-        },
-      },
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  axios({
+    method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+    url:
+      "https://graph.facebook.com/v12.0/" +
+      phone_number_id +
+      "/messages?access_token=" +
+      token,
+    data: {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: from,
+      type: "document",
+      document: {
+          filename: "Pritam-Da-Dhaba-HIGHLIGHTS.pdf",
+          link: `${HOST_URL}/static/images/juhu-highlights.pdf`
+      }
+    },
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 const listId16Response = (phone_number_id, from) => {
