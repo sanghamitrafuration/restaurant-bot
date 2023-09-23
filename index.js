@@ -17,6 +17,7 @@ const app = express()
 app.use(body_parser.json()); // creates express http server
 app.use("/static", express.static("public"))
 const PORT = process.env.PORT || 1337;
+const HOST_URL = process.env.HOST_URL;
 
 // import Food from "./images/food-1.pdf";
 
@@ -1593,7 +1594,7 @@ const buttonId7Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "Pritam-Da-Dhaba-FOOD-MENU.pdf",
-          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/food-menu-dadar.pdf"
+          link: `${HOST_URL}/static/images/food-menu-dadar.pdf`
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -1634,7 +1635,7 @@ const buttonId8Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "Pritam-Da-Dhaba-BEVERAGE-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/beverages-menu-dadar.pdf"
+          link: `${HOST_URL}/static/images/beverages-menu-dadar.pdf`
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -1765,7 +1766,7 @@ const buttonId13Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "Pritam-Da-Dhaba-FOOD-MENU.pdf",
-          link: "https://b0ca-65-0-205-163.ngrok-free.app/static/images/food-menu-juhu.pdf"
+          link: `${HOST_URL}/static/images/food-menu-juhu.pdf`
       }
     },
     headers: { "Content-Type": "application/json" },
@@ -1806,7 +1807,7 @@ const buttonId14Response = (phone_number_id, from) => {
       type: "document",
       document: {
           filename: "Pritam-Da-Dhaba-BEVERAGE-MENU.pdf",
-          link: "https://1c22-65-0-205-163.ngrok-free.app/static/images/beverages-menu-juhu.pdf"
+          link: `${HOST_URL}/static/images/beverages-menu-juhu.pdf`
       }
     },
     headers: { "Content-Type": "application/json" },
