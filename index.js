@@ -1394,16 +1394,16 @@ const buttonId5Response = (phone_number_id, from) => {
               title: "Timing",
               rows: [
                 {
-                  "id": "<LIST_SECTION_1_ROW_1_ID>",
-                  "title": "<SECTION_1_ROW_1_TITLE>"
+                  "id": "OUR_SERVICE_1_ID",
+                  "title": "Our Timing"
               },
               {
-                  "id": "<LIST_SECTION_1_ROW_2_ID>",
-                  "title": "<SECTION_1_ROW_2_TITLE>"
+                  "id": "OUR_SERVICE_2_ID",
+                  "title": "Is it open now?"
               },
               {
-                  "id": "<LIST_SECTION_1_ROW_3_ID>",
-                  "title": "<SECTION_1_ROW_3_TITLE>"
+                  "id": "OUR_SERVICE_34_ID",
+                  "title": "Ambience Photos"
               }
               ],
             },
