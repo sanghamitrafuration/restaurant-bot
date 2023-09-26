@@ -1394,21 +1394,17 @@ const buttonId5Response = (phone_number_id, from) => {
               title: "Timing",
               rows: [
                 {
-                  id: "OUR_SERVICE_1_ID",
-                  title: "Timings of Restaurant",
-                },
-                {
-                  id: "OUR_SERVICE_2_ID",
-                  title: "Is it open now?",
-                },
-                {
-                  id: "OUR_SERVICE_3_ID",
-                  title: "Ambience Photos",
-                },
-                {
-                  id: "OUR_SERVICE_4_ID",
-                  title: "Top Dishes",
-                },
+                  "id": "<LIST_SECTION_1_ROW_1_ID>",
+                  "title": "<SECTION_1_ROW_1_TITLE>"
+              },
+              {
+                  "id": "<LIST_SECTION_1_ROW_2_ID>",
+                  "title": "<SECTION_1_ROW_2_TITLE>"
+              },
+              {
+                  "id": "<LIST_SECTION_1_ROW_3_ID>",
+                  "title": "<SECTION_1_ROW_3_TITLE>"
+              }
               ],
             },
             {
