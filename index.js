@@ -1405,10 +1405,10 @@ const buttonId5Response = (phone_number_id, from) => {
                   "id": "OUR_SERVICE_3_ID",
                   "title": "Ambience Photos"
                 },
-                {
-                  "id": "OUR_SERVICE_4_ID",
-                  "title": "Top Dishes"
-                },
+                // {
+                //   "id": "OUR_SERVICE_4_ID",
+                //   "title": "Top Dishes"
+                // },
                 // {
                 //   "id": "OUR_SERVICE_5_ID",
                 //   "title": "Menu"
