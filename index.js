@@ -1391,93 +1391,19 @@ const buttonId5Response = (phone_number_id, from) => {
           button: "About Us",
           sections: [
             {
-              title: "Timing",
-              rows: [
-                {
-                  "id": "OUR_SERVICE_1_ID",
-                  "title": "Our Timing"
-                },
-                {
-                  "id": "OUR_SERVICE_2_ID",
-                  "title": "Is it open now?"
-                },
-                {
-                  "id": "OUR_SERVICE_3_ID",
-                  "title": "Ambience Photos"
-                },
-                // {
-                //   "id": "OUR_SERVICE_4_ID",
-                //   "title": "Top Dishes"
-                // },
-                // {
-                //   "id": "OUR_SERVICE_5_ID",
-                //   "title": "Menu"
-                // },
-                // {
-                //   "id": "OUR_SERVICE_6_ID",
-                //   "title": "Highlights of Restaurant",
-                // },
-                // {
-                //   "id": "OUR_SERVICE_7_ID",
-                //   "title": "Our Location",
-                // },
-                // {
-                //   "id": "OUR_SERVICE_8_ID",
-                //   "title": "Order Link",
-                // },
-                // {
-                //   "id": "OUR_SERVICE_9_ID",
-                //   "title": "Contact Us",
-                // }
-              ],
-            },
-            {
-              title: "Photos",
-              rows: [
-                {
-                  id: "OUR_SERVICE_3_ID",
-                  title: "Ambience Photos",
-                },
-                {
-                  id: "OUR_SERVICE_4_ID",
-                  title: "Top Dishes",
-                },
-              ],
-            },
-            {
-              title: "Food",
-              rows: [
-                {
-                  id: "OUR_SERVICE_5_ID",
-                  title: "Menu",
-                },
-                {
-                  id: "OUR_SERVICE_6_ID",
-                  title: "Highlights of Restaurant",
-                },
-              ],
-            },
-            {
-              title: "Find Us",
-              rows: [
-                {
-                  id: "OUR_SERVICE_7_ID",
-                  title: "Our Location",
-                },
-                {
-                  id: "OUR_SERVICE_8_ID",
-                  title: "Order Link",
-                },
-              ],
-            },
-            {
-              title: "Contact",
-              rows: [
-                {
-                  id: "OUR_SERVICE_9_ID",
-                  title: "Contact Us",
-                },
-              ],
+              "title": "<LIST_SECTION_1_TITLE>",
+              "rows": [
+                  {
+                      "id": "<LIST_SECTION_1_ROW_1_ID>",
+                      "title": "<SECTION_1_ROW_1_TITLE>",
+                      "description": "<SECTION_1_ROW_1_DESC>"
+                  },
+                  {
+                      "id": "<LIST_SECTION_1_ROW_2_ID>",
+                      "title": "<SECTION_1_ROW_2_TITLE>",
+                      "description": "<SECTION_1_ROW_2_DESC>"
+                  }
+              ]
             },
           ],
         },
