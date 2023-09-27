@@ -1404,14 +1404,14 @@ const buttonId5Response = (phone_number_id, from) => {
                       "description": "<SECTION_1_ROW_2_DESC>"
                   },
                   {
-                      "id": "<LIST_SECTION_1_ROW_2_ID>",
-                      "title": "<SECTION_1_ROW_2_TITLE>",
-                      "description": "<SECTION_1_ROW_2_DESC>"
+                      "id": "<LIST_SECTION_1_ROW_3_ID>",
+                      "title": "<SECTION_1_ROW_3_TITLE>",
+                      "description": "<SECTION_1_ROW_3_DESC>"
                   },
                   {
-                      "id": "<LIST_SECTION_1_ROW_2_ID>",
-                      "title": "<SECTION_1_ROW_2_TITLE>",
-                      "description": "<SECTION_1_ROW_2_DESC>"
+                      "id": "<LIST_SECTION_1_ROW_4_ID>",
+                      "title": "<SECTION_1_ROW_4_TITLE>",
+                      "description": "<SECTION_1_ROW_4_DESC>"
                   }
               ]
             },
