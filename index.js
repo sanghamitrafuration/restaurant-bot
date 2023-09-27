@@ -1466,69 +1466,49 @@ const buttonId6Response = (phone_number_id, from) => {
         },
         action: {
           button: "About Us",
-          sections: [
+          "sections": [
             {
-              title: "Timing",
-              rows: [
-                {
-                  id: "OUR_SERVICE_10_ID",
-                  title: "Timings of Restaurant",
-                },
-                {
-                  id: "OUR_SERVICE_11_ID",
-                  title: "Is it open now?",
-                },
-              ],
-            },
-            {
-              title: "Photos",
-              rows: [
-                {
-                  id: "OUR_SERVICE_12_ID",
-                  title: "Ambience Photos",
-                },
-                {
-                  id: "OUR_SERVICE_13_ID",
-                  title: "Top Dishes",
-                },
-              ],
-            },
-            {
-              title: "Food",
-              rows: [
-                {
-                  id: "OUR_SERVICE_14_ID",
-                  title: "Menu",
-                },
-                {
-                  id: "OUR_SERVICE_15_ID",
-                  title: "Highlights of Restaurant",
-                },
-              ],
-            },
-            {
-              title: "Find Us",
-              rows: [
-                {
-                  id: "OUR_SERVICE_16_ID",
-                  title: "Our Location",
-                },
-                {
-                  id: "OUR_SERVICE_17_ID",
-                  title: "Order Link",
-                },
-              ],
-            },
-            {
-              title: "Contact",
-              rows: [
-                {
-                  id: "OUR_SERVICE_18_ID",
-                  title: "Contact Us",
-                },
-              ],
-            },
-          ],
+                "title": "Prtam Da Dhaba",
+                "rows": [
+                    {
+                      "id": "OUR_SERVICE_10_ID",
+                      "title": "Timings of Restaurant"
+                    },
+                    {
+                      "id": "OUR_SERVICE_11_ID",
+                      "title": "Is it open now?"
+                    },
+                    {
+                      "id": "OUR_SERVICE_12_ID",
+                      "title": "Ambience Photos"
+                    },
+                    {
+                      "id": "OUR_SERVICE_13_ID",
+                      "title": "Top Dishes"
+                    },
+                    {
+                      "id": "OUR_SERVICE_14_ID",
+                      "title": "Menu"
+                    },
+                    {
+                      "id": "OUR_SERVICE_15_ID",
+                      "title": "Highlights of Restaurant"
+                    },
+                    {
+                      "id": "OUR_SERVICE_16_ID",
+                      "title": "Our Location"
+                    },
+                    {
+                      "id": "OUR_SERVICE_17_ID",
+                      "title": "Order Link"
+                    },
+                    {
+                      "id": "OUR_SERVICE_18_ID",
+                      "title": "Contact Us"
+                    }
+                ]
+            }
+          ]
         },
       },
     },
