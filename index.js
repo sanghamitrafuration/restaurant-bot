@@ -2053,13 +2053,16 @@ app.post("/bulkmessage", (req, res) => {
   }
 });
 
-app.post("/announcement", (req, res) => {
+app.post("/announcement", async(req, res) => {
   try {
     let body = req.body;
-    let recipient = getTotalUsers();
-    let phone_number_id = "body.excel.phone_number_id";
+    let recipients = await UserModel.find();
+    recipients= recipients.map((user) =>{
+      return user.recipient
+    })
+    let phone_number_id = "120839521101670";
     if (body.message && body.image) {
-      for (let j = 0; j < recipient.length; j++) {
+      for (let j = 0; j < recipients.length; j++) {
         axios({
           method: "POST", // Required, HTTP method, a string, e.g. POST, GET
           url:
@@ -2069,7 +2072,7 @@ app.post("/announcement", (req, res) => {
             token,
           data: {
             messaging_product: "whatsapp",
-            to: recipient[j],
+            to: recipients[j],
             type: "text",
             text: {
               // the text object
@@ -2089,7 +2092,7 @@ app.post("/announcement", (req, res) => {
             data: {
               messaging_product: "whatsapp",
               recipient_type: "individual",
-              to: recipient[j],
+              to: recipients[j],
               type: "image",
               image: {
                 link: body.image[i],
@@ -2112,7 +2115,7 @@ app.post("/announcement", (req, res) => {
           data: {
             messaging_product: "whatsapp",
             recipient_type: "individual",
-            to: recipient[j],
+            to: recipients[j],
             type: "image",
             image: {
               link: body.image[i],
@@ -2132,7 +2135,7 @@ app.post("/announcement", (req, res) => {
           token,
         data: {
           messaging_product: "whatsapp",
-          to: recipient[j],
+          to: recipients[j],
           type: "text",
           text: {
             // the text object
@@ -2145,21 +2148,20 @@ app.post("/announcement", (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.send({ error: error });
+    res.send({ "error": error });
   }
 });
 
-const getTotalUsers= () => {
-  axios.get("")
-  .then((r)=>r.json())
-  .then((r)=>{
-    const data= r.map((obj)=>{
-      return obj.recipient
-    })
-    console.log(data);
-    return data
-  })
-}
+app.get("/dailyuser", async(req, res) => {
+  try {
+    let users = await UserModel.find();
+    console.log(users);
+    res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.send({ "error": error });
+  }
+});
 
 
 app.listen(process.env.PORT, async () => {
