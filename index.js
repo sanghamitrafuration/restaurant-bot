@@ -2155,8 +2155,66 @@ app.post("/announcement", async(req, res) => {
 app.get("/dailyuser", async(req, res) => {
   try {
     let users = await UserModel.find();
-    console.log(users);
+    const options= { timeZone : 'Asia/Kolkata'};
+    const currentDate= new Date().toLocaleString('en-US', options);
+    const day = new Date(currentDate);
+    const date = day.getDate();
+    const dailyUser= users.filter((d)=>{
+      return d.createdAt.getDate()===date
+    })
+    res.send(dailyUser);
+  } catch (error) {
+    console.log(error);
+    res.send({ "error": error });
+  }
+});
+
+app.get("/totaluser", async(req, res) => {
+  try {
+    let users = await UserModel.find();
     res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.send({ "error": error });
+  }
+});
+
+app.get("/weeklyuser", async(req, res) => {
+  try {
+    let users = await UserModel.find();
+    const options= { timeZone : 'Asia/Kolkata'};
+    const currentDate= new Date().toLocaleString('en-US', options);
+    const day = new Date(currentDate);
+    const startDate = new Date(day.getFullYear(), 0, 1);
+    const days = Math.floor((day - startDate) /
+        (24 * 60 * 60 * 1000));
+    const weekNumber = Math.ceil(days / 7);
+    const weeklyuser= users.filter((d)=>{
+      const day = d.createdAt;
+      const startDate = new Date(day.getFullYear(), 0, 1);
+      const days = Math.floor((day - startDate) /
+          (24 * 60 * 60 * 1000));
+      const dweekNumber = Math.ceil(days / 7);
+      return dweekNumber===weekNumber
+    })
+    res.send(weeklyuser);
+  } catch (error) {
+    console.log(error);
+    res.send({ "error": error });
+  }
+});
+
+app.get("/monthlyuser", async(req, res) => {
+  try {
+    let users = await UserModel.find();
+    const options= { timeZone : 'Asia/Kolkata'};
+    const currentDate= new Date().toLocaleString('en-US', options);
+    const day = new Date(currentDate);
+    const month = day.getMonth();
+    const monthlyUser= users.filter((d)=>{
+      return d.createdAt.getMonth()===month
+    })
+    res.send(monthlyUser);
   } catch (error) {
     console.log(error);
     res.send({ "error": error });
