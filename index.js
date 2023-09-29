@@ -14,8 +14,8 @@ const { UserModel } = require("./model/user-model");
 const { connection } = require("./configs/db");
 const axios = require("axios").default;
 const app = express();
-let cors = require('cors')
-app.use(cors({origin: "*"}))
+// let cors = require('cors')
+// app.use(cors({origin: "*"}))
 app.use(body_parser.json()); // creates express http server
 app.use("/static", express.static("public"))
 const PORT = process.env.PORT || 1337;
