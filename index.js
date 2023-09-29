@@ -2053,6 +2053,115 @@ app.post("/bulkmessage", (req, res) => {
   }
 });
 
+app.post("/announcement", (req, res) => {
+  try {
+    let body = req.body;
+    let recipient = getTotalUsers();
+    let phone_number_id = "body.excel.phone_number_id";
+    if (body.message && body.image) {
+      for (let j = 0; j < recipient.length; j++) {
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id[j] +
+            "/messages?access_token=" +
+            token,
+          data: {
+            messaging_product: "whatsapp",
+            to: recipient[j],
+            type: "text",
+            text: {
+              // the text object
+              body: body.message,
+            },
+          },
+          headers: { "Content-Type": "application/json" },
+        });
+        for (let i = 0; i < body.image.length; i++) {
+          axios({
+            method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+            url:
+              "https://graph.facebook.com/v12.0/" +
+              phone_number_id[j] +
+              "/messages?access_token=" +
+              token,
+            data: {
+              messaging_product: "whatsapp",
+              recipient_type: "individual",
+              to: recipient[j],
+              type: "image",
+              image: {
+                link: body.image[i],
+              },
+            },
+            headers: { "Content-Type": "application/json" },
+          });
+        }
+      }
+      res.send({ message: "Message and Images sent" });
+    } else if (body.image) {
+      for (let i = 0; i < body.image.length; i++) {
+        axios({
+          method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+          url:
+            "https://graph.facebook.com/v12.0/" +
+            phone_number_id[j] +
+            "/messages?access_token=" +
+            token,
+          data: {
+            messaging_product: "whatsapp",
+            recipient_type: "individual",
+            to: recipient[j],
+            type: "image",
+            image: {
+              link: body.image[i],
+            },
+          },
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+      res.send({ message: "Images sent" });
+    } else {
+      axios({
+        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+        url:
+          "https://graph.facebook.com/v12.0/" +
+          phone_number_id[j] +
+          "/messages?access_token=" +
+          token,
+        data: {
+          messaging_product: "whatsapp",
+          to: recipient[j],
+          type: "text",
+          text: {
+            // the text object
+            body: body.message,
+          },
+        },
+        headers: { "Content-Type": "application/json" },
+      });
+      res.send({ message: "Messagesent" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.send({ error: error });
+  }
+});
+
+const getTotalUsers= () => {
+  axios.get("")
+  .then((r)=>r.json())
+  .then((r)=>{
+    const data= r.map((obj)=>{
+      return obj.recipient
+    })
+    console.log(data);
+    return data
+  })
+}
+
+
 app.listen(process.env.PORT, async () => {
   try {
     await connection;
