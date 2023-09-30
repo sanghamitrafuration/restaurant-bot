@@ -91,6 +91,7 @@ app.post("/webhook", async (req, res) => {
             name: name,
             recipient: from,
             phone_number_id: phone_number_id,
+            messsage_count: 1
           });
           await newdata.save();
         }else{
