@@ -93,6 +93,8 @@ app.post("/webhook", async (req, res) => {
             phone_number_id: phone_number_id,
           });
           await newdata.save();
+        }else{
+          await UserModel.findByIdAndUpdate({"_id": ifExist[0]._id}, {"messsage_count": ifExist[0].messsage_count+1});
         }
         if (reqData.entry[0].changes[0].value.messages[0].type === "text") {
           let msg_body =
