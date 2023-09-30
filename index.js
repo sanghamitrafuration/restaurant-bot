@@ -2226,6 +2226,17 @@ app.get("/monthlyuser", async(req, res) => {
   }
 });
 
+app.get("/searchuser", async(req, res) => {
+  try {
+    let phone= req.body.phone;
+    let users = await UserModel.find({"recipient" : {"$regex": phone, "$options": "i"} });
+    res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.send({ "error": error });
+  }
+});
+
 
 app.listen(process.env.PORT, async () => {
   try {
